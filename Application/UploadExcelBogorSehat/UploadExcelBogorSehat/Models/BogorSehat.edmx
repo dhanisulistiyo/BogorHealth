@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BogorHealthModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="NIP" />
+          </Key>
+          <Property Name="NIP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nama" Type="varchar(max)" Nullable="false" />
+          <Property Name="Jabatan" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Agama">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nama" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dokter">
+          <Key>
+            <PropertyRef Name="NPA" />
+          </Key>
+          <Property Name="NPA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nama" Type="varchar(max)" Nullable="false" />
+          <Property Name="JenisKelamin" Type="varchar" MaxLength="20" />
+          <Property Name="TanggalLahir" Type="date" />
+          <Property Name="KotaLahir" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Alamat" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar" MaxLength="10" />
+          <Property Name="IdSpesialis" Type="varchar" MaxLength="5" />
+          <Property Name="Agama" Type="int" />
+          <Property Name="ImageUrl" Type="text" />
+        </EntityType>
+        <EntityType Name="JadwalLayanan">
+          <Key>
+            <PropertyRef Name="IdLayananRS" />
+            <PropertyRef Name="IdDokter" />
+            <PropertyRef Name="Hari" />
+            <PropertyRef Name="JamMulai" />
+            <PropertyRef Name="JamSelesai" />
+          </Key>
+          <Property Name="IdLayananRS" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdDokter" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Hari" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="JamMulai" Type="time" Precision="7" Nullable="false" />
+          <Property Name="JamSelesai" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JenisLayanan">
+          <Key>
+            <PropertyRef Name="IdLayanan" />
+          </Key>
+          <Property Name="IdLayanan" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="JenisLayanan" Type="varchar" MaxLength="50" />
+          <Property Name="Deskripsi" Type="text" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="LayananRS">
+          <Key>
+            <PropertyRef Name="IdLayanan" />
+            <PropertyRef Name="IdRS" />
+            <PropertyRef Name="IdLayananRS" />
+          </Key>
+          <Property Name="IdLayanan" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdRS" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdLayananRS" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pasien">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nama" Type="varchar(max)" Nullable="false" />
+          <Property Name="Alamat" Type="varchar(max)" />
+          <Property Name="TanggalLahir" Type="date" />
+          <Property Name="KotaLahir" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="JenisKelamin" Type="varchar" MaxLength="20" />
+          <Property Name="Pekerjaan" Type="varchar(max)" />
+          <Property Name="StatusPernikahan" Type="varchar" MaxLength="20" />
+          <Property Name="Agama" Type="int" />
+          <Property Name="Password" Type="varchar" MaxLength="10" />
+          <Property Name="ImageUrl" Type="text" />
+        </EntityType>
+        <EntityType Name="RumahSakit">
+          <Key>
+            <PropertyRef Name="IdRS" />
+            <PropertyRef Name="IdAdmin" />
+          </Key>
+          <Property Name="IdRS" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NamaRS" Type="varchar(max)" Nullable="false" />
+          <Property Name="JenisRS" Type="varchar" MaxLength="10" />
+          <Property Name="KelasRS" Type="varchar" MaxLength="1" />
+          <Property Name="Deskripsi" Type="nchar" MaxLength="10" />
+          <Property Name="Visi" Type="text" />
+          <Property Name="Misi" Type="text" />
+          <Property Name="Direktur" Type="varchar" MaxLength="50" />
+          <Property Name="Alamat" Type="varbinary(max)" />
+          <Property Name="Penyelenggara" Type="varchar" MaxLength="30" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="Kota" Type="varchar" MaxLength="50" />
+          <Property Name="KodePos" Type="int" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="IdAdmin" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Spesialis">
+          <Key>
+            <PropertyRef Name="IdSpesialis" />
+          </Key>
+          <Property Name="IdSpesialis" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NamaSpesialis" Type="varchar(max)" Nullable="false" />
+          <Property Name="Gelar" Type="varchar" MaxLength="10" />
+          <Property Name="Deskripsi" Type="text" />
+        </EntityType>
+        <Association Name="FK_Dokter_Agama">
+          <End Role="Agama" Type="Self.Agama" Multiplicity="0..1" />
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agama">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dokter">
+              <PropertyRef Name="Agama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokter_Spesialis">
+          <End Role="Spesialis" Type="Self.Spesialis" Multiplicity="0..1" />
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spesialis">
+              <PropertyRef Name="IdSpesialis" />
+            </Principal>
+            <Dependent Role="Dokter">
+              <PropertyRef Name="IdSpesialis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JadwalLayanan_Dokter">
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="1" />
+          <End Role="JadwalLayanan" Type="Self.JadwalLayanan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dokter">
+              <PropertyRef Name="NPA" />
+            </Principal>
+            <Dependent Role="JadwalLayanan">
+              <PropertyRef Name="IdDokter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_LayananRS_JadwalLayanan' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_LayananRS_JadwalLayanan" />-->
+        <Association Name="FK_LayananRS_JenisLayanan">
+          <End Role="JenisLayanan" Type="Self.JenisLayanan" Multiplicity="1" />
+          <End Role="LayananRS" Type="Self.LayananRS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JenisLayanan">
+              <PropertyRef Name="IdLayanan" />
+            </Principal>
+            <Dependent Role="LayananRS">
+              <PropertyRef Name="IdLayanan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_LayananRS_RumahSakit" />-->
+        <Association Name="FK_Pasien_Agama">
+          <End Role="Agama" Type="Self.Agama" Multiplicity="0..1" />
+          <End Role="Pasien" Type="Self.Pasien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agama">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pasien">
+              <PropertyRef Name="Agama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RumahSakit_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="RumahSakit" Type="Self.RumahSakit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="NIP" />
+            </Principal>
+            <Dependent Role="RumahSakit">
+              <PropertyRef Name="IdAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BogorHealthModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agama" EntityType="Self.Agama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dokter" EntityType="Self.Dokter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JadwalLayanan" EntityType="Self.JadwalLayanan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JenisLayanan" EntityType="Self.JenisLayanan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LayananRS" EntityType="Self.LayananRS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pasien" EntityType="Self.Pasien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RumahSakit" EntityType="Self.RumahSakit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spesialis" EntityType="Self.Spesialis" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Dokter_Agama" Association="Self.FK_Dokter_Agama">
+            <End Role="Agama" EntitySet="Agama" />
+            <End Role="Dokter" EntitySet="Dokter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokter_Spesialis" Association="Self.FK_Dokter_Spesialis">
+            <End Role="Spesialis" EntitySet="Spesialis" />
+            <End Role="Dokter" EntitySet="Dokter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JadwalLayanan_Dokter" Association="Self.FK_JadwalLayanan_Dokter">
+            <End Role="Dokter" EntitySet="Dokter" />
+            <End Role="JadwalLayanan" EntitySet="JadwalLayanan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LayananRS_JenisLayanan" Association="Self.FK_LayananRS_JenisLayanan">
+            <End Role="JenisLayanan" EntitySet="JenisLayanan" />
+            <End Role="LayananRS" EntitySet="LayananRS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pasien_Agama" Association="Self.FK_Pasien_Agama">
+            <End Role="Agama" EntitySet="Agama" />
+            <End Role="Pasien" EntitySet="Pasien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RumahSakit_Admin" Association="Self.FK_RumahSakit_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="RumahSakit" EntitySet="RumahSakit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BogorHealthModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="NIP" />
+          </Key>
+          <Property Name="NIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Jabatan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RumahSakits" Relationship="Self.FK_RumahSakit_Admin" FromRole="Admin" ToRole="RumahSakit" />
+        </EntityType>
+        <EntityType Name="Agama">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dokters" Relationship="Self.FK_Dokter_Agama" FromRole="Agama" ToRole="Dokter" />
+          <NavigationProperty Name="Pasiens" Relationship="Self.FK_Pasien_Agama" FromRole="Agama" ToRole="Pasien" />
+        </EntityType>
+        <EntityType Name="Dokter">
+          <Key>
+            <PropertyRef Name="NPA" />
+          </Key>
+          <Property Name="NPA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JenisKelamin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TanggalLahir" Type="DateTime" Precision="0" />
+          <Property Name="KotaLahir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Alamat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IdSpesialis" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Agama" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agama1" Relationship="Self.FK_Dokter_Agama" FromRole="Dokter" ToRole="Agama" />
+          <NavigationProperty Name="Spesiali" Relationship="Self.FK_Dokter_Spesialis" FromRole="Dokter" ToRole="Spesialis" />
+          <NavigationProperty Name="JadwalLayanans" Relationship="Self.FK_JadwalLayanan_Dokter" FromRole="Dokter" ToRole="JadwalLayanan" />
+        </EntityType>
+        <EntityType Name="JadwalLayanan">
+          <Key>
+            <PropertyRef Name="IdLayananRS" />
+            <PropertyRef Name="IdDokter" />
+            <PropertyRef Name="Hari" />
+            <PropertyRef Name="JamMulai" />
+            <PropertyRef Name="JamSelesai" />
+          </Key>
+          <Property Name="IdLayananRS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdDokter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hari" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JamMulai" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="JamSelesai" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Dokter" Relationship="Self.FK_JadwalLayanan_Dokter" FromRole="JadwalLayanan" ToRole="Dokter" />
+        </EntityType>
+        <EntityType Name="JenisLayanan">
+          <Key>
+            <PropertyRef Name="IdLayanan" />
+          </Key>
+          <Property Name="IdLayanan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JenisLayanan1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LayananRS" Relationship="Self.FK_LayananRS_JenisLayanan" FromRole="JenisLayanan" ToRole="LayananRS" />
+        </EntityType>
+        <EntityType Name="LayananR">
+          <Key>
+            <PropertyRef Name="IdLayanan" />
+            <PropertyRef Name="IdRS" />
+            <PropertyRef Name="IdLayananRS" />
+          </Key>
+          <Property Name="IdLayanan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdRS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdLayananRS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="JenisLayanan" Relationship="Self.FK_LayananRS_JenisLayanan" FromRole="LayananRS" ToRole="JenisLayanan" />
+        </EntityType>
+        <EntityType Name="Pasien">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alamat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TanggalLahir" Type="DateTime" Precision="0" />
+          <Property Name="KotaLahir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JenisKelamin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Pekerjaan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StatusPernikahan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Agama" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agama1" Relationship="Self.FK_Pasien_Agama" FromRole="Pasien" ToRole="Agama" />
+        </EntityType>
+        <EntityType Name="RumahSakit">
+          <Key>
+            <PropertyRef Name="IdRS" />
+            <PropertyRef Name="IdAdmin" />
+          </Key>
+          <Property Name="IdRS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NamaRS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JenisRS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KelasRS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Deskripsi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Visi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Misi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Direktur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Alamat" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Penyelenggara" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Kota" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KodePos" Type="Int32" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdAdmin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_RumahSakit_Admin" FromRole="RumahSakit" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Spesiali">
+          <Key>
+            <PropertyRef Name="IdSpesialis" />
+          </Key>
+          <Property Name="IdSpesialis" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NamaSpesialis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gelar" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dokters" Relationship="Self.FK_Dokter_Spesialis" FromRole="Spesialis" ToRole="Dokter" />
+        </EntityType>
+        <Association Name="FK_RumahSakit_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="RumahSakit" Type="Self.RumahSakit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="NIP" />
+            </Principal>
+            <Dependent Role="RumahSakit">
+              <PropertyRef Name="IdAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokter_Agama">
+          <End Role="Agama" Type="Self.Agama" Multiplicity="0..1" />
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agama">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dokter">
+              <PropertyRef Name="Agama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pasien_Agama">
+          <End Role="Agama" Type="Self.Agama" Multiplicity="0..1" />
+          <End Role="Pasien" Type="Self.Pasien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agama">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pasien">
+              <PropertyRef Name="Agama" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokter_Spesialis">
+          <End Role="Spesialis" Type="Self.Spesiali" Multiplicity="0..1" />
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spesialis">
+              <PropertyRef Name="IdSpesialis" />
+            </Principal>
+            <Dependent Role="Dokter">
+              <PropertyRef Name="IdSpesialis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JadwalLayanan_Dokter">
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="1" />
+          <End Role="JadwalLayanan" Type="Self.JadwalLayanan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dokter">
+              <PropertyRef Name="NPA" />
+            </Principal>
+            <Dependent Role="JadwalLayanan">
+              <PropertyRef Name="IdDokter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LayananRS_JenisLayanan">
+          <End Role="JenisLayanan" Type="Self.JenisLayanan" Multiplicity="1" />
+          <End Role="LayananRS" Type="Self.LayananR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JenisLayanan">
+              <PropertyRef Name="IdLayanan" />
+            </Principal>
+            <Dependent Role="LayananRS">
+              <PropertyRef Name="IdLayanan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BogorHealthEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Agamas" EntityType="Self.Agama" />
+          <EntitySet Name="Dokters" EntityType="Self.Dokter" />
+          <EntitySet Name="JadwalLayanans" EntityType="Self.JadwalLayanan" />
+          <EntitySet Name="JenisLayanans" EntityType="Self.JenisLayanan" />
+          <EntitySet Name="LayananRS" EntityType="Self.LayananR" />
+          <EntitySet Name="Pasiens" EntityType="Self.Pasien" />
+          <EntitySet Name="RumahSakits" EntityType="Self.RumahSakit" />
+          <EntitySet Name="Spesialis" EntityType="Self.Spesiali" />
+          <AssociationSet Name="FK_RumahSakit_Admin" Association="Self.FK_RumahSakit_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="RumahSakit" EntitySet="RumahSakits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokter_Agama" Association="Self.FK_Dokter_Agama">
+            <End Role="Agama" EntitySet="Agamas" />
+            <End Role="Dokter" EntitySet="Dokters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pasien_Agama" Association="Self.FK_Pasien_Agama">
+            <End Role="Agama" EntitySet="Agamas" />
+            <End Role="Pasien" EntitySet="Pasiens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokter_Spesialis" Association="Self.FK_Dokter_Spesialis">
+            <End Role="Spesialis" EntitySet="Spesialis" />
+            <End Role="Dokter" EntitySet="Dokters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JadwalLayanan_Dokter" Association="Self.FK_JadwalLayanan_Dokter">
+            <End Role="Dokter" EntitySet="Dokters" />
+            <End Role="JadwalLayanan" EntitySet="JadwalLayanans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LayananRS_JenisLayanan" Association="Self.FK_LayananRS_JenisLayanan">
+            <End Role="JenisLayanan" EntitySet="JenisLayanans" />
+            <End Role="LayananRS" EntitySet="LayananRS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BogorHealthModelStoreContainer" CdmEntityContainer="BogorHealthEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="BogorHealthModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="Jabatan" ColumnName="Jabatan" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agamas">
+            <EntityTypeMapping TypeName="BogorHealthModel.Agama">
+              <MappingFragment StoreEntitySet="Agama">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dokters">
+            <EntityTypeMapping TypeName="BogorHealthModel.Dokter">
+              <MappingFragment StoreEntitySet="Dokter">
+                <ScalarProperty Name="NPA" ColumnName="NPA" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="JenisKelamin" ColumnName="JenisKelamin" />
+                <ScalarProperty Name="TanggalLahir" ColumnName="TanggalLahir" />
+                <ScalarProperty Name="KotaLahir" ColumnName="KotaLahir" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdSpesialis" ColumnName="IdSpesialis" />
+                <ScalarProperty Name="Agama" ColumnName="Agama" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JadwalLayanans">
+            <EntityTypeMapping TypeName="BogorHealthModel.JadwalLayanan">
+              <MappingFragment StoreEntitySet="JadwalLayanan">
+                <ScalarProperty Name="IdLayananRS" ColumnName="IdLayananRS" />
+                <ScalarProperty Name="IdDokter" ColumnName="IdDokter" />
+                <ScalarProperty Name="Hari" ColumnName="Hari" />
+                <ScalarProperty Name="JamMulai" ColumnName="JamMulai" />
+                <ScalarProperty Name="JamSelesai" ColumnName="JamSelesai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JenisLayanans">
+            <EntityTypeMapping TypeName="BogorHealthModel.JenisLayanan">
+              <MappingFragment StoreEntitySet="JenisLayanan">
+                <ScalarProperty Name="IdLayanan" ColumnName="IdLayanan" />
+                <ScalarProperty Name="JenisLayanan1" ColumnName="JenisLayanan" />
+                <ScalarProperty Name="Deskripsi" ColumnName="Deskripsi" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LayananRS">
+            <EntityTypeMapping TypeName="BogorHealthModel.LayananR">
+              <MappingFragment StoreEntitySet="LayananRS">
+                <ScalarProperty Name="IdLayanan" ColumnName="IdLayanan" />
+                <ScalarProperty Name="IdRS" ColumnName="IdRS" />
+                <ScalarProperty Name="IdLayananRS" ColumnName="IdLayananRS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pasiens">
+            <EntityTypeMapping TypeName="BogorHealthModel.Pasien">
+              <MappingFragment StoreEntitySet="Pasien">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+                <ScalarProperty Name="TanggalLahir" ColumnName="TanggalLahir" />
+                <ScalarProperty Name="KotaLahir" ColumnName="KotaLahir" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JenisKelamin" ColumnName="JenisKelamin" />
+                <ScalarProperty Name="Pekerjaan" ColumnName="Pekerjaan" />
+                <ScalarProperty Name="StatusPernikahan" ColumnName="StatusPernikahan" />
+                <ScalarProperty Name="Agama" ColumnName="Agama" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RumahSakits">
+            <EntityTypeMapping TypeName="BogorHealthModel.RumahSakit">
+              <MappingFragment StoreEntitySet="RumahSakit">
+                <ScalarProperty Name="IdRS" ColumnName="IdRS" />
+                <ScalarProperty Name="NamaRS" ColumnName="NamaRS" />
+                <ScalarProperty Name="JenisRS" ColumnName="JenisRS" />
+                <ScalarProperty Name="KelasRS" ColumnName="KelasRS" />
+                <ScalarProperty Name="Deskripsi" ColumnName="Deskripsi" />
+                <ScalarProperty Name="Visi" ColumnName="Visi" />
+                <ScalarProperty Name="Misi" ColumnName="Misi" />
+                <ScalarProperty Name="Direktur" ColumnName="Direktur" />
+                <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+                <ScalarProperty Name="Penyelenggara" ColumnName="Penyelenggara" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Kota" ColumnName="Kota" />
+                <ScalarProperty Name="KodePos" ColumnName="KodePos" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spesialis">
+            <EntityTypeMapping TypeName="BogorHealthModel.Spesiali">
+              <MappingFragment StoreEntitySet="Spesialis">
+                <ScalarProperty Name="IdSpesialis" ColumnName="IdSpesialis" />
+                <ScalarProperty Name="NamaSpesialis" ColumnName="NamaSpesialis" />
+                <ScalarProperty Name="Gelar" ColumnName="Gelar" />
+                <ScalarProperty Name="Deskripsi" ColumnName="Deskripsi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
