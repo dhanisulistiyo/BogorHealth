@@ -12,16 +12,14 @@ namespace UploadExcelBogorSehat.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class JadwalLayanan
+    public partial class Konsultasi
     {
-        public int IdJadwal { get; set; }
-        public string IdLayananRS { get; set; }
-        public string IdDokter { get; set; }
-        public string Hari { get; set; }
-        public System.TimeSpan JamMulai { get; set; }
-        public System.TimeSpan JamSelesai { get; set; }
+        public string NIK { get; set; }
+        public string NPA { get; set; }
+        public string Chat { get; set; }
+        public System.DateTime DateTime { get; set; }
     
         public virtual Dokter Dokter { get; set; }
-        public virtual LayananR LayananR { get; set; }
+        public virtual Pasien Pasien { get; set; }
     }
 }

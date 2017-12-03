@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4817bbb476964e21b6690343b2221cf3" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="BogorHealthModel.Admin" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.Agama" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.Dokter" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.JadwalLayanan" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.JenisLayanan" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.LayananR" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.Pasien" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.RumahSakit" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.Spesiali" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.Antrian" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BogorHealthModel.Konsultasi" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="BogorHealthModel.FK_RumahSakit_Admin1" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_Dokter_Agama" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_Pasien_Agama" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_Dokter_Spesialis" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_Dokter" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Dokter" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_LayananRS1" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_Antrian_JenisLayanan" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_LayananRS_JenisLayanan" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_LayananRS_RumahSakit" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_Antrian_Pasien" ManuallyRouted="false" />
+        <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Pasien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

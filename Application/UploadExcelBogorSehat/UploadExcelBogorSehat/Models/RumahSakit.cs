@@ -14,6 +14,12 @@ namespace UploadExcelBogorSehat.Models
     
     public partial class RumahSakit
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RumahSakit()
+        {
+            this.LayananRS = new HashSet<LayananR>();
+        }
+    
         public string IdRS { get; set; }
         public string NamaRS { get; set; }
         public string JenisRS { get; set; }
@@ -22,7 +28,7 @@ namespace UploadExcelBogorSehat.Models
         public string Visi { get; set; }
         public string Misi { get; set; }
         public string Direktur { get; set; }
-        public byte[] Alamat { get; set; }
+        public string Alamat { get; set; }
         public string Penyelenggara { get; set; }
         public string Website { get; set; }
         public string Kota { get; set; }
@@ -33,5 +39,7 @@ namespace UploadExcelBogorSehat.Models
         public string IdAdmin { get; set; }
     
         public virtual Admin Admin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LayananR> LayananRS { get; set; }
     }
 }

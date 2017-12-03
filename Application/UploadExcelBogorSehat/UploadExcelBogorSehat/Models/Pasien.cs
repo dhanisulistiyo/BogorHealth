@@ -14,6 +14,13 @@ namespace UploadExcelBogorSehat.Models
     
     public partial class Pasien
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pasien()
+        {
+            this.Antrians = new HashSet<Antrian>();
+            this.Konsultasis = new HashSet<Konsultasi>();
+        }
+    
         public string NIK { get; set; }
         public string Nama { get; set; }
         public string Alamat { get; set; }
@@ -28,5 +35,9 @@ namespace UploadExcelBogorSehat.Models
         public string ImageUrl { get; set; }
     
         public virtual Agama Agama1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Antrian> Antrians { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Konsultasi> Konsultasis { get; set; }
     }
 }

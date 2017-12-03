@@ -14,7 +14,7 @@
           <Property Name="Jabatan" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="text" />
         </EntityType>
         <EntityType Name="Agama">
           <Key>
@@ -22,6 +22,20 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nama" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BogorHealth.dbo.Antrian' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Antrian">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="NoAntrian" />
+            <PropertyRef Name="TanggalDaftar" />
+            <PropertyRef Name="IdLayanan" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NoAntrian" Type="int" Nullable="false" />
+          <Property Name="TanggalDaftar" Type="datetime" Nullable="false" />
+          <Property Name="IdLayanan" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="Dokter">
           <Key>
@@ -41,13 +55,10 @@
         </EntityType>
         <EntityType Name="JadwalLayanan">
           <Key>
-            <PropertyRef Name="IdLayananRS" />
-            <PropertyRef Name="IdDokter" />
-            <PropertyRef Name="Hari" />
-            <PropertyRef Name="JamMulai" />
-            <PropertyRef Name="JamSelesai" />
+            <PropertyRef Name="IdJadwal" />
           </Key>
-          <Property Name="IdLayananRS" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdJadwal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdLayananRS" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="IdDokter" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Hari" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="JamMulai" Type="time" Precision="7" Nullable="false" />
@@ -60,17 +71,29 @@
           <Property Name="IdLayanan" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="JenisLayanan" Type="varchar" MaxLength="50" />
           <Property Name="Deskripsi" Type="text" />
-          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Konsultasi">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="NPA" />
+            <PropertyRef Name="Chat" />
+            <PropertyRef Name="DateTime" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NPA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Chat" Type="text" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="LayananRS">
           <Key>
-            <PropertyRef Name="IdLayanan" />
-            <PropertyRef Name="IdRS" />
             <PropertyRef Name="IdLayananRS" />
           </Key>
           <Property Name="IdLayanan" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="IdRS" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="IdLayananRS" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdLayananRS" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Pasien">
           <Key>
@@ -92,24 +115,23 @@
         <EntityType Name="RumahSakit">
           <Key>
             <PropertyRef Name="IdRS" />
-            <PropertyRef Name="IdAdmin" />
           </Key>
           <Property Name="IdRS" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="NamaRS" Type="varchar(max)" Nullable="false" />
           <Property Name="JenisRS" Type="varchar" MaxLength="10" />
           <Property Name="KelasRS" Type="varchar" MaxLength="1" />
-          <Property Name="Deskripsi" Type="nchar" MaxLength="10" />
+          <Property Name="Deskripsi" Type="text" />
           <Property Name="Visi" Type="text" />
           <Property Name="Misi" Type="text" />
           <Property Name="Direktur" Type="varchar" MaxLength="50" />
-          <Property Name="Alamat" Type="varbinary(max)" />
+          <Property Name="Alamat" Type="varchar(max)" />
           <Property Name="Penyelenggara" Type="varchar" MaxLength="30" />
           <Property Name="Website" Type="varchar" MaxLength="50" />
           <Property Name="Kota" Type="varchar" MaxLength="50" />
           <Property Name="KodePos" Type="int" />
           <Property Name="Telephone" Type="varchar" MaxLength="20" />
           <Property Name="Fax" Type="varchar" MaxLength="20" />
-          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="text" />
           <Property Name="IdAdmin" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Spesialis">
@@ -121,6 +143,30 @@
           <Property Name="Gelar" Type="varchar" MaxLength="10" />
           <Property Name="Deskripsi" Type="text" />
         </EntityType>
+        <Association Name="FK_Antrian_JenisLayanan">
+          <End Role="JenisLayanan" Type="Self.JenisLayanan" Multiplicity="1" />
+          <End Role="Antrian" Type="Self.Antrian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JenisLayanan">
+              <PropertyRef Name="IdLayanan" />
+            </Principal>
+            <Dependent Role="Antrian">
+              <PropertyRef Name="IdLayanan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Antrian_Pasien">
+          <End Role="Pasien" Type="Self.Pasien" Multiplicity="1" />
+          <End Role="Antrian" Type="Self.Antrian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasien">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="Antrian">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Dokter_Agama">
           <End Role="Agama" Type="Self.Agama" Multiplicity="0..1" />
           <End Role="Dokter" Type="Self.Dokter" Multiplicity="*" />
@@ -157,9 +203,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_LayananRS_JadwalLayanan' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_LayananRS_JadwalLayanan" />-->
+        <Association Name="FK_JadwalLayanan_LayananRS1">
+          <End Role="LayananRS" Type="Self.LayananRS" Multiplicity="1" />
+          <End Role="JadwalLayanan" Type="Self.JadwalLayanan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LayananRS">
+              <PropertyRef Name="IdLayananRS" />
+            </Principal>
+            <Dependent Role="JadwalLayanan">
+              <PropertyRef Name="IdLayananRS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Konsultasi_Dokter">
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="1" />
+          <End Role="Konsultasi" Type="Self.Konsultasi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dokter">
+              <PropertyRef Name="NPA" />
+            </Principal>
+            <Dependent Role="Konsultasi">
+              <PropertyRef Name="NPA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Konsultasi_Pasien">
+          <End Role="Pasien" Type="Self.Pasien" Multiplicity="1" />
+          <End Role="Konsultasi" Type="Self.Konsultasi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasien">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="Konsultasi">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LayananRS_JenisLayanan">
           <End Role="JenisLayanan" Type="Self.JenisLayanan" Multiplicity="1" />
           <End Role="LayananRS" Type="Self.LayananRS" Multiplicity="*" />
@@ -172,9 +251,18 @@ warning 6035: The relationship 'FK_LayananRS_JadwalLayanan' has columns that are
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_LayananRS_RumahSakit" />-->
+        <Association Name="FK_LayananRS_RumahSakit">
+          <End Role="RumahSakit" Type="Self.RumahSakit" Multiplicity="1" />
+          <End Role="LayananRS" Type="Self.LayananRS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RumahSakit">
+              <PropertyRef Name="IdRS" />
+            </Principal>
+            <Dependent Role="LayananRS">
+              <PropertyRef Name="IdRS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Pasien_Agama">
           <End Role="Agama" Type="Self.Agama" Multiplicity="0..1" />
           <End Role="Pasien" Type="Self.Pasien" Multiplicity="*" />
@@ -187,7 +275,7 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RumahSakit_Admin">
+        <Association Name="FK_RumahSakit_Admin1">
           <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
           <End Role="RumahSakit" Type="Self.RumahSakit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,6 +297,30 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <EntitySet Name="Pasien" EntityType="Self.Pasien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RumahSakit" EntityType="Self.RumahSakit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spesialis" EntityType="Self.Spesialis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Antrian" EntityType="Self.Antrian" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Antrian].[NIK] AS [NIK], 
+    [Antrian].[NoAntrian] AS [NoAntrian], 
+    [Antrian].[TanggalDaftar] AS [TanggalDaftar], 
+    [Antrian].[IdLayanan] AS [IdLayanan]
+    FROM [dbo].[Antrian] AS [Antrian]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Konsultasi" EntityType="Self.Konsultasi" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Konsultasi].[NIK] AS [NIK], 
+    [Konsultasi].[NPA] AS [NPA], 
+    [Konsultasi].[Chat] AS [Chat], 
+    [Konsultasi].[DateTime] AS [DateTime]
+    FROM [dbo].[Konsultasi] AS [Konsultasi]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Antrian_JenisLayanan" Association="Self.FK_Antrian_JenisLayanan">
+            <End Role="JenisLayanan" EntitySet="JenisLayanan" />
+            <End Role="Antrian" EntitySet="Antrian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Antrian_Pasien" Association="Self.FK_Antrian_Pasien">
+            <End Role="Pasien" EntitySet="Pasien" />
+            <End Role="Antrian" EntitySet="Antrian" />
+          </AssociationSet>
           <AssociationSet Name="FK_Dokter_Agama" Association="Self.FK_Dokter_Agama">
             <End Role="Agama" EntitySet="Agama" />
             <End Role="Dokter" EntitySet="Dokter" />
@@ -221,15 +333,31 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
             <End Role="Dokter" EntitySet="Dokter" />
             <End Role="JadwalLayanan" EntitySet="JadwalLayanan" />
           </AssociationSet>
+          <AssociationSet Name="FK_JadwalLayanan_LayananRS1" Association="Self.FK_JadwalLayanan_LayananRS1">
+            <End Role="LayananRS" EntitySet="LayananRS" />
+            <End Role="JadwalLayanan" EntitySet="JadwalLayanan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konsultasi_Dokter" Association="Self.FK_Konsultasi_Dokter">
+            <End Role="Dokter" EntitySet="Dokter" />
+            <End Role="Konsultasi" EntitySet="Konsultasi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konsultasi_Pasien" Association="Self.FK_Konsultasi_Pasien">
+            <End Role="Pasien" EntitySet="Pasien" />
+            <End Role="Konsultasi" EntitySet="Konsultasi" />
+          </AssociationSet>
           <AssociationSet Name="FK_LayananRS_JenisLayanan" Association="Self.FK_LayananRS_JenisLayanan">
             <End Role="JenisLayanan" EntitySet="JenisLayanan" />
+            <End Role="LayananRS" EntitySet="LayananRS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LayananRS_RumahSakit" Association="Self.FK_LayananRS_RumahSakit">
+            <End Role="RumahSakit" EntitySet="RumahSakit" />
             <End Role="LayananRS" EntitySet="LayananRS" />
           </AssociationSet>
           <AssociationSet Name="FK_Pasien_Agama" Association="Self.FK_Pasien_Agama">
             <End Role="Agama" EntitySet="Agama" />
             <End Role="Pasien" EntitySet="Pasien" />
           </AssociationSet>
-          <AssociationSet Name="FK_RumahSakit_Admin" Association="Self.FK_RumahSakit_Admin">
+          <AssociationSet Name="FK_RumahSakit_Admin1" Association="Self.FK_RumahSakit_Admin1">
             <End Role="Admin" EntitySet="Admin" />
             <End Role="RumahSakit" EntitySet="RumahSakit" />
           </AssociationSet>
@@ -249,7 +377,7 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RumahSakits" Relationship="Self.FK_RumahSakit_Admin" FromRole="Admin" ToRole="RumahSakit" />
+          <NavigationProperty Name="RumahSakits" Relationship="Self.FK_RumahSakit_Admin1" FromRole="Admin" ToRole="RumahSakit" />
         </EntityType>
         <EntityType Name="Agama">
           <Key>
@@ -278,21 +406,20 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <NavigationProperty Name="Agama1" Relationship="Self.FK_Dokter_Agama" FromRole="Dokter" ToRole="Agama" />
           <NavigationProperty Name="Spesiali" Relationship="Self.FK_Dokter_Spesialis" FromRole="Dokter" ToRole="Spesialis" />
           <NavigationProperty Name="JadwalLayanans" Relationship="Self.FK_JadwalLayanan_Dokter" FromRole="Dokter" ToRole="JadwalLayanan" />
+          <NavigationProperty Name="Konsultasis" Relationship="Self.FK_Konsultasi_Dokter" FromRole="Dokter" ToRole="Konsultasi" />
         </EntityType>
         <EntityType Name="JadwalLayanan">
           <Key>
-            <PropertyRef Name="IdLayananRS" />
-            <PropertyRef Name="IdDokter" />
-            <PropertyRef Name="Hari" />
-            <PropertyRef Name="JamMulai" />
-            <PropertyRef Name="JamSelesai" />
+            <PropertyRef Name="IdJadwal" />
           </Key>
-          <Property Name="IdLayananRS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdJadwal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLayananRS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdDokter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Hari" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="JamMulai" Type="Time" Nullable="false" Precision="7" />
           <Property Name="JamSelesai" Type="Time" Nullable="false" Precision="7" />
           <NavigationProperty Name="Dokter" Relationship="Self.FK_JadwalLayanan_Dokter" FromRole="JadwalLayanan" ToRole="Dokter" />
+          <NavigationProperty Name="LayananR" Relationship="Self.FK_JadwalLayanan_LayananRS1" FromRole="JadwalLayanan" ToRole="LayananRS" />
         </EntityType>
         <EntityType Name="JenisLayanan">
           <Key>
@@ -302,18 +429,19 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <Property Name="JenisLayanan1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Antrians" Relationship="Self.FK_Antrian_JenisLayanan" FromRole="JenisLayanan" ToRole="Antrian" />
           <NavigationProperty Name="LayananRS" Relationship="Self.FK_LayananRS_JenisLayanan" FromRole="JenisLayanan" ToRole="LayananRS" />
         </EntityType>
         <EntityType Name="LayananR">
           <Key>
-            <PropertyRef Name="IdLayanan" />
-            <PropertyRef Name="IdRS" />
             <PropertyRef Name="IdLayananRS" />
           </Key>
           <Property Name="IdLayanan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdRS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdLayananRS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdLayananRS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="JadwalLayanans" Relationship="Self.FK_JadwalLayanan_LayananRS1" FromRole="LayananRS" ToRole="JadwalLayanan" />
           <NavigationProperty Name="JenisLayanan" Relationship="Self.FK_LayananRS_JenisLayanan" FromRole="LayananRS" ToRole="JenisLayanan" />
+          <NavigationProperty Name="RumahSakit" Relationship="Self.FK_LayananRS_RumahSakit" FromRole="LayananRS" ToRole="RumahSakit" />
         </EntityType>
         <EntityType Name="Pasien">
           <Key>
@@ -332,21 +460,22 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Agama1" Relationship="Self.FK_Pasien_Agama" FromRole="Pasien" ToRole="Agama" />
+          <NavigationProperty Name="Antrians" Relationship="Self.FK_Antrian_Pasien" FromRole="Pasien" ToRole="Antrian" />
+          <NavigationProperty Name="Konsultasis" Relationship="Self.FK_Konsultasi_Pasien" FromRole="Pasien" ToRole="Konsultasi" />
         </EntityType>
         <EntityType Name="RumahSakit">
           <Key>
             <PropertyRef Name="IdRS" />
-            <PropertyRef Name="IdAdmin" />
           </Key>
           <Property Name="IdRS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NamaRS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="JenisRS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="KelasRS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Deskripsi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Visi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Misi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Direktur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Alamat" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Alamat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Penyelenggara" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Kota" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -355,7 +484,8 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IdAdmin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Admin" Relationship="Self.FK_RumahSakit_Admin" FromRole="RumahSakit" ToRole="Admin" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_RumahSakit_Admin1" FromRole="RumahSakit" ToRole="Admin" />
+          <NavigationProperty Name="LayananRS" Relationship="Self.FK_LayananRS_RumahSakit" FromRole="RumahSakit" ToRole="LayananRS" />
         </EntityType>
         <EntityType Name="Spesiali">
           <Key>
@@ -367,7 +497,35 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <Property Name="Deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Dokters" Relationship="Self.FK_Dokter_Spesialis" FromRole="Spesialis" ToRole="Dokter" />
         </EntityType>
-        <Association Name="FK_RumahSakit_Admin">
+        <EntityType Name="Antrian">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="NoAntrian" />
+            <PropertyRef Name="TanggalDaftar" />
+            <PropertyRef Name="IdLayanan" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoAntrian" Type="Int32" Nullable="false" />
+          <Property Name="TanggalDaftar" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdLayanan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="JenisLayanan" Relationship="Self.FK_Antrian_JenisLayanan" FromRole="Antrian" ToRole="JenisLayanan" />
+          <NavigationProperty Name="Pasien" Relationship="Self.FK_Antrian_Pasien" FromRole="Antrian" ToRole="Pasien" />
+        </EntityType>
+        <EntityType Name="Konsultasi">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="NPA" />
+            <PropertyRef Name="Chat" />
+            <PropertyRef Name="DateTime" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NPA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Dokter" Relationship="Self.FK_Konsultasi_Dokter" FromRole="Konsultasi" ToRole="Dokter" />
+          <NavigationProperty Name="Pasien" Relationship="Self.FK_Konsultasi_Pasien" FromRole="Konsultasi" ToRole="Pasien" />
+        </EntityType>
+        <Association Name="FK_RumahSakit_Admin1">
           <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
           <End Role="RumahSakit" Type="Self.RumahSakit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -427,6 +585,42 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Konsultasi_Dokter">
+          <End Role="Dokter" Type="Self.Dokter" Multiplicity="1" />
+          <End Role="Konsultasi" Type="Self.Konsultasi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dokter">
+              <PropertyRef Name="NPA" />
+            </Principal>
+            <Dependent Role="Konsultasi">
+              <PropertyRef Name="NPA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JadwalLayanan_LayananRS1">
+          <End Role="LayananRS" Type="Self.LayananR" Multiplicity="1" />
+          <End Role="JadwalLayanan" Type="Self.JadwalLayanan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LayananRS">
+              <PropertyRef Name="IdLayananRS" />
+            </Principal>
+            <Dependent Role="JadwalLayanan">
+              <PropertyRef Name="IdLayananRS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Antrian_JenisLayanan">
+          <End Role="JenisLayanan" Type="Self.JenisLayanan" Multiplicity="1" />
+          <End Role="Antrian" Type="Self.Antrian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JenisLayanan">
+              <PropertyRef Name="IdLayanan" />
+            </Principal>
+            <Dependent Role="Antrian">
+              <PropertyRef Name="IdLayanan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LayananRS_JenisLayanan">
           <End Role="JenisLayanan" Type="Self.JenisLayanan" Multiplicity="1" />
           <End Role="LayananRS" Type="Self.LayananR" Multiplicity="*" />
@@ -436,6 +630,42 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
             </Principal>
             <Dependent Role="LayananRS">
               <PropertyRef Name="IdLayanan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LayananRS_RumahSakit">
+          <End Role="RumahSakit" Type="Self.RumahSakit" Multiplicity="1" />
+          <End Role="LayananRS" Type="Self.LayananR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RumahSakit">
+              <PropertyRef Name="IdRS" />
+            </Principal>
+            <Dependent Role="LayananRS">
+              <PropertyRef Name="IdRS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Antrian_Pasien">
+          <End Role="Pasien" Type="Self.Pasien" Multiplicity="1" />
+          <End Role="Antrian" Type="Self.Antrian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasien">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="Antrian">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Konsultasi_Pasien">
+          <End Role="Pasien" Type="Self.Pasien" Multiplicity="1" />
+          <End Role="Konsultasi" Type="Self.Konsultasi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasien">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="Konsultasi">
+              <PropertyRef Name="NIK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -449,7 +679,9 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <EntitySet Name="Pasiens" EntityType="Self.Pasien" />
           <EntitySet Name="RumahSakits" EntityType="Self.RumahSakit" />
           <EntitySet Name="Spesialis" EntityType="Self.Spesiali" />
-          <AssociationSet Name="FK_RumahSakit_Admin" Association="Self.FK_RumahSakit_Admin">
+          <EntitySet Name="Antrians" EntityType="Self.Antrian" />
+          <EntitySet Name="Konsultasis" EntityType="Self.Konsultasi" />
+          <AssociationSet Name="FK_RumahSakit_Admin1" Association="Self.FK_RumahSakit_Admin1">
             <End Role="Admin" EntitySet="Admins" />
             <End Role="RumahSakit" EntitySet="RumahSakits" />
           </AssociationSet>
@@ -469,9 +701,33 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
             <End Role="Dokter" EntitySet="Dokters" />
             <End Role="JadwalLayanan" EntitySet="JadwalLayanans" />
           </AssociationSet>
+          <AssociationSet Name="FK_Konsultasi_Dokter" Association="Self.FK_Konsultasi_Dokter">
+            <End Role="Dokter" EntitySet="Dokters" />
+            <End Role="Konsultasi" EntitySet="Konsultasis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JadwalLayanan_LayananRS1" Association="Self.FK_JadwalLayanan_LayananRS1">
+            <End Role="LayananRS" EntitySet="LayananRS" />
+            <End Role="JadwalLayanan" EntitySet="JadwalLayanans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Antrian_JenisLayanan" Association="Self.FK_Antrian_JenisLayanan">
+            <End Role="JenisLayanan" EntitySet="JenisLayanans" />
+            <End Role="Antrian" EntitySet="Antrians" />
+          </AssociationSet>
           <AssociationSet Name="FK_LayananRS_JenisLayanan" Association="Self.FK_LayananRS_JenisLayanan">
             <End Role="JenisLayanan" EntitySet="JenisLayanans" />
             <End Role="LayananRS" EntitySet="LayananRS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LayananRS_RumahSakit" Association="Self.FK_LayananRS_RumahSakit">
+            <End Role="RumahSakit" EntitySet="RumahSakits" />
+            <End Role="LayananRS" EntitySet="LayananRS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Antrian_Pasien" Association="Self.FK_Antrian_Pasien">
+            <End Role="Pasien" EntitySet="Pasiens" />
+            <End Role="Antrian" EntitySet="Antrians" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konsultasi_Pasien" Association="Self.FK_Konsultasi_Pasien">
+            <End Role="Pasien" EntitySet="Pasiens" />
+            <End Role="Konsultasi" EntitySet="Konsultasis" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -520,6 +776,7 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
           <EntitySetMapping Name="JadwalLayanans">
             <EntityTypeMapping TypeName="BogorHealthModel.JadwalLayanan">
               <MappingFragment StoreEntitySet="JadwalLayanan">
+                <ScalarProperty Name="IdJadwal" ColumnName="IdJadwal" />
                 <ScalarProperty Name="IdLayananRS" ColumnName="IdLayananRS" />
                 <ScalarProperty Name="IdDokter" ColumnName="IdDokter" />
                 <ScalarProperty Name="Hari" ColumnName="Hari" />
@@ -595,6 +852,26 @@ warning 6035: The relationship 'FK_LayananRS_RumahSakit' has columns that are no
                 <ScalarProperty Name="NamaSpesialis" ColumnName="NamaSpesialis" />
                 <ScalarProperty Name="Gelar" ColumnName="Gelar" />
                 <ScalarProperty Name="Deskripsi" ColumnName="Deskripsi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Antrians">
+            <EntityTypeMapping TypeName="BogorHealthModel.Antrian">
+              <MappingFragment StoreEntitySet="Antrian">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="NoAntrian" ColumnName="NoAntrian" />
+                <ScalarProperty Name="TanggalDaftar" ColumnName="TanggalDaftar" />
+                <ScalarProperty Name="IdLayanan" ColumnName="IdLayanan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konsultasis">
+            <EntityTypeMapping TypeName="BogorHealthModel.Konsultasi">
+              <MappingFragment StoreEntitySet="Konsultasi">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="NPA" ColumnName="NPA" />
+                <ScalarProperty Name="Chat" ColumnName="Chat" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

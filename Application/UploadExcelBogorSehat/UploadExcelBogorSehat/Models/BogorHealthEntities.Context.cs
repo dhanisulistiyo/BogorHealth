@@ -34,5 +34,7 @@ namespace UploadExcelBogorSehat.Models
         public virtual DbSet<Pasien> Pasiens { get; set; }
         public virtual DbSet<RumahSakit> RumahSakits { get; set; }
         public virtual DbSet<Spesiali> Spesialis { get; set; }
+        public virtual DbSet<Antrian> Antrians { get; set; }
+        public virtual DbSet<Konsultasi> Konsultasis { get; set; }
     }
 }

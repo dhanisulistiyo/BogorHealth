@@ -94,58 +94,64 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Agama.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BogorSehat.Context.cs">
+    <Compile Include="Models\Antrian.cs">
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BogorHealthEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BogorSehat.Context.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BogorSehat.cs">
+    <Compile Include="Models\BogorHealthEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BogorSehat.Designer.cs">
+    <Compile Include="Models\BogorHealthEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BogorSehat.edmx</DependentUpon>
+      <DependentUpon>BogorHealthEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Dokter.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JadwalLayanan.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JenisLayanan.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Konsultasi.cs">
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LayananR.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pasien.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RumahSakit.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spesiali.cs">
-      <DependentUpon>BogorSehat.tt</DependentUpon>
+      <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Models\BogorSehat.edmx">
+    <EntityDeploy Include="Models\BogorHealthEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BogorSehat.Designer.cs</LastGenOutput>
+      <LastGenOutput>BogorHealthEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\BogorSehat.edmx.diagram">
-      <DependentUpon>BogorSehat.edmx</DependentUpon>
+    <None Include="Models\BogorHealthEntities.edmx.diagram">
+      <DependentUpon>BogorHealthEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -161,21 +167,20 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="Models\BogorSehat.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BogorSehat.Context.cs</LastGenOutput>
-      <DependentUpon>BogorSehat.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\BogorSehat.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BogorSehat.edmx</DependentUpon>
-      <LastGenOutput>BogorSehat.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\BogorHealthEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BogorHealthEntities.edmx</DependentUpon>
+      <LastGenOutput>BogorHealthEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BogorHealthEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BogorHealthEntities.edmx</DependentUpon>
+      <LastGenOutput>BogorHealthEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

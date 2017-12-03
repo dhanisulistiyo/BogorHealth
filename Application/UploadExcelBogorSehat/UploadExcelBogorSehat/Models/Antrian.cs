@@ -12,21 +12,14 @@ namespace UploadExcelBogorSehat.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LayananR
+    public partial class Antrian
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LayananR()
-        {
-            this.JadwalLayanans = new HashSet<JadwalLayanan>();
-        }
-    
+        public string NIK { get; set; }
+        public int NoAntrian { get; set; }
+        public System.DateTime TanggalDaftar { get; set; }
         public string IdLayanan { get; set; }
-        public string IdRS { get; set; }
-        public string IdLayananRS { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
         public virtual JenisLayanan JenisLayanan { get; set; }
-        public virtual RumahSakit RumahSakit { get; set; }
+        public virtual Pasien Pasien { get; set; }
     }
 }

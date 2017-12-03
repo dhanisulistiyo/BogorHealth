@@ -18,6 +18,7 @@ namespace UploadExcelBogorSehat.Models
         public Dokter()
         {
             this.JadwalLayanans = new HashSet<JadwalLayanan>();
+            this.Konsultasis = new HashSet<Konsultasi>();
         }
     
         public string NPA { get; set; }
@@ -36,5 +37,7 @@ namespace UploadExcelBogorSehat.Models
         public virtual Spesiali Spesiali { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Konsultasi> Konsultasis { get; set; }
     }
 }
