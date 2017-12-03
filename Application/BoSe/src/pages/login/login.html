@@ -1,0 +1,52 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-title></ion-title>
+</ion-header>
+
+<div class="scroll-content" style="margin-bottom:0px">
+  <ion-content class="bg-img">
+    <img src="assets/img/touress-logo-white.png" class="logo">
+    <ion-card>
+      <ion-card-header>
+        Login
+      </ion-card-header>
+      <ion-card-content>
+        <form (ngSubmit)="login()">
+          <ion-list no-line>
+            <ion-item>
+              <ion-icon ios="ios-briefcase" md="ios-briefcase-outline" item-left></ion-icon>
+              <ion-input [ngModelOptions]="{standalone: true}" type="number" placeholder="NIK" [(ngModel)]="registerCredentials.companyid"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon ios="ios-person" md="ios-person-outline" item-left></ion-icon>
+              <ion-input [ngModelOptions]="{standalone: true}" type="text" placeholder="User Name" [(ngModel)]="registerCredentials.username"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon ios="ios-lock" md="ios-lock-outline" item-left></ion-icon>
+              <ion-input [ngModelOptions]="{standalone: true}" type="password" placeholder="Password" [(ngModel)]="registerCredentials.password"></ion-input>
+            </ion-item>
+            <br>
+          </ion-list>
+          <button ion-button type="submit" class="btn-login" style="margin-top: 5px;margin-bottom: 0px;" full>Login</button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+
+  </ion-content>
+
+  <ion-footer class="bottom-bar hideElementOnKeyboardShown" no-border>
+    <button ion-button class="btn-register" style="margin-top: 10px;margin-bottom: 0px;" (click)="createAccount()" full>Don't have an account? Sign up</button>
+    <p class="p-center" style="margin-top: 10px;margin-bottom: 10px;">
+      By login an account, you accept our
+      <b>
+        <a class="p-center" href="">User Agreement</a>
+      </b>.
+    </p>
+  </ion-footer>
+</div>

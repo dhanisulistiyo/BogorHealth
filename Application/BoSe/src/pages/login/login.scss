@@ -1,0 +1,249 @@
+page-login {
+    .scroll-content {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    } // Footer CSS
+    .bottom-bar {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    } // Page CSS
+    h2 {
+        font-family: 'Quicksand', sans-serif;
+        color: white;
+        font-size: 8vw;
+        font-weight: 700;
+        margin-bottom: 120px;
+    }
+    .logo {
+        margin-top: 65px;
+        margin-bottom: 40px;
+        height: 70px;
+        width: 230px;
+        text-align: center;
+    }
+    h3 {
+        font-family: 'Architects Daughter', cursive;
+        color: white;
+        font-size: 8vw;
+        font-weight: 500;
+    }
+    .p-center {
+        text-align: center;
+        font-size: 4vw;
+        color: white;
+    } // ion-list CSS
+    // item item-trns list list-md
+    .item.item-list {
+        border-color: red;
+        border-radius: 6px;
+        background-color: #000000;
+        color: white;
+        opacity: .6;
+        padding-bottom: 10px;
+    }
+    .item.item-trns {
+        border-color: red;
+        border-radius: 6px;
+        background-color: #000000;
+        color: white;
+        padding-right: 15px;
+    }
+    .list-background {
+        background: transparent !important;
+        border-color: red;
+        border-radius: 12px;
+        background-color: #000000;
+        color: white;
+        opacity: .6;
+    } // Register Background CSS
+    .signup-background {
+        background-image: url('../assets/img/signup_bg.jpg'); //background-image: url('../../img/inner_bg.png');
+        // background: url('../../img/getstart.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(to bottom right, #002f4b, #ffffff);
+            opacity: .6;
+        }
+    }
+    .bg-img {
+        width: 100%;
+        height: 100%; // background: url('https://s-media-cache-ak0.pinimg.com/originals/94/bf/77/94bf77e4e29d14bd51528968b1a2ce05.jpg') center center no-repeat;
+        background: url('http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1496699939/hot-air-balloon-nevsehir-central-anatolia-cappadocia-turkey-HOTAIR0605.jpg?itok=Qzd3ApWr');
+        background-size: auto;
+        background-repeat: no-repeat; //background-image: url('../assets/img/signup_bg.jpg');
+        // width: 100vw;
+        // height: 100vh;
+        // -webkit-filter: blur(10px);
+        // -moz-filter: blur(10px);
+        // -o-filter: blur(10px);
+        // -ms-filter: blur(10px);
+        // filter: blur(10px);
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(to bottom right, #002f4b, #ffffff);
+            opacity: .2;
+        }
+    } // Scroll Content
+    .scroll-content {
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+    } // Ion Card
+    ion-card.card {
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.0);
+        border-radius: 5px;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+    }
+    ion-card-header.card-header {
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    .list>.item-block:first-child {
+        border: medium none;
+    }
+    .item {
+        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        border: medium none;
+        border-radius: 5px;
+        .text-input,
+        {
+            color: #ffffff;
+        }
+        .text-input-md {
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-top: 13px;
+            margin-bottom: 13px;
+            padding: 0;
+            width: calc(100% - 8px - 8px);
+        }
+        *:-moz-placeholder {
+            color: #2979ff!important;
+        }
+        *:-ms-input-placeholder {
+            color: #00ff00;
+        }
+        *::-webkit-input-placeholder {
+            color: #ffffff;
+        }
+        input::-moz-placeholder {
+            color: #ff00ff;
+        }
+        input:-moz-placeholder {
+            color: #00ffff;
+        }
+    } // Button CSS
+    .btn-register {
+        background-color: #FF9800;
+        text-transform: none;
+        font-size: 4vw;
+        font-family: 'Open Sans', cursive;
+    }
+    .btn-register:hover {
+        background-color: #FF8100 !important;
+    }
+    .btn-login {
+        background-color: #2979ff;
+        text-transform: none;
+        font-size: 4vw;
+        font-family: 'Open Sans', cursive;
+    }
+    .btn-login:hover {
+        background-color: #1587b9 !important;
+    } // Alignment CSS
+    .center {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-direction: normal;
+        -moz-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        -moz-box-orient: horizontal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-align-content: stretch;
+        -ms-flex-line-pack: stretch;
+        align-content: stretch;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .item-input .label-md,
+    .item-select .label-md,
+    .item-datetime .label-md {
+        color: white;
+    }
+    .input-has-focus .label-md[floating],
+    .input-has-value .label-md[floating] {
+        transform: translate3d(0, 0, 0) scale(1.1);
+    }
+    .input-has-focus .label-md[floating] {
+        color: white;
+    }
+    .label-md[floating] {
+        font-family: 'Open Sans', cursive;
+        font-size: 4vw;
+    }
+    .item-label-floating .text-input-md {
+        font-size: 4vw;
+    }
+    ion-icon.icon {
+        display: inline;
+        color: white;
+    }
+    .item-md .item-button {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 25px;
+        font-size: 4vw;
+        font-family: 'Open Sans', cursive;
+    }
+    .bottom-bar {
+        position: fixed;
+        bottom: 15px;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .bottom-bar {
+        position: fixed;
+        bottom: 15px;
+        width: 100%;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}

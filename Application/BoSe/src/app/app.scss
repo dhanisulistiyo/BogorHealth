@@ -14,3 +14,932 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+    // http://ionicframework.com/docs/v2/theming/
+    // App Global Sass
+    // --------------------------------------------------
+    // Put style rules here that you want to apply globally. These
+    // styles are for the entire app and not just one component.
+    // Additionally, this file can be also used as an entry point
+    // to import other Sass files to be included in the output CSS.
+    //
+    // Shared Sass variables, which can be used to adjust Ionic's
+    // default Sass variables, belong in "theme/variables.scss".
+    //
+    // To declare rules for a specific mode, create a child rule
+    // for the .md, .ios, or .wp mode classes. The mode class is
+    // automatically applied to the <body> element in the app.
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+    @import url('https://fonts.googleapis.com/css?family=Architects+Daughter');
+    @import url('https://fonts.googleapis.com/css?family=Quicksand');
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+    @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+    @import url('https://fonts.googleapis.com/css?family=Raleway');
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+    $primary-color:#4fd2c2;
+    body.keyboard-is-open .hideElementOnKeyboardShown {
+        display: none;
+    }
+
+    .ios,
+    .md {
+        // * {
+        //     font-family: 'Poppins' !important;
+        // }
+        body,
+        span,
+        button,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        div,
+        ion-item,
+        ion-card,
+        ion-title,
+        ion-footer,
+        ion-header {
+            font-family: 'Poppins' !important;
+        }
+        /* Larger than a phone */
+        @media (min-width: 567px) {
+            map,
+            div[map] {
+                width: 95%;
+                height: 425px;
+            }
+        }
+        /* Small devices such as phone */
+        @media (max-width: 567px) {
+            map,
+            div[map] {
+                width: 90%;
+                height: 325px;
+            }
+        }
+        ul {
+            list-style-type: none;
+        }
+        .content-bgn {
+            background: #f9f9f9;
+        }
+        .scroll-content {
+            background: #f2f2f2;
+        }
+        #map {
+            width: 100%;
+            height: 40%;
+        }
+        .scroll {
+            height: 100%
+        }
+        page-app {
+            .header-menu-user {
+                min-height: 160px;
+                .toolbar-background-md {
+                    border-color: #4fd2c2; // background: #4fd2c2; 
+                    background-image: url('http://androidwallpape.rs/content/02-wallpapers/76-waterdrops/wallpaper672898.jpeg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                .toolbar-title-md {
+                    padding: 0 12px;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 4vw;
+                    font-weight: 600;
+                    color: white;
+                    text-align: center;
+                }
+            }
+            .item-md ion-icon[item-left]+.item-inner,
+            .item-md ion-icon[item-left]+.item-input,
+            .item-md ion-icon[item-start]+.item-inner,
+            .item-md ion-icon[item-start]+.item-input {
+                margin-left: 4px;
+            }
+            .item-md h2 {
+                margin: 2px 0;
+                font-size: 4.6vw;
+                font-weight: 500;
+            }
+            .item-md .item-button {
+                padding: 0 .6em;
+                height: 6vw; //font-size: 1.2rem;
+            }
+            ion-icon.custom-font {
+                color: #4fd2c2;
+                font-size: 6vw;
+                padding-top: 4px;
+            }
+            p.custom-text {
+                font-family: 'Poppins', sans-serif;
+                font-size: 4vw;
+                font-weight: 500;
+                color: black;
+                text-align: left;
+            }
+        }
+        page-home-screen {
+            ion-page.show-page {
+                background: transparent;
+                opacity: 1;
+            }
+        }
+        page-login .scroll-content {
+            background: transparent;
+            -webkit-align-content: center;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            text-align: center;
+            padding-bottom: 0!important;
+            margin-bottom: 0!important;
+        }
+        page-register {
+            ion-label.label.label-md[stacked] {
+                font-family: 'Poppins', sans-serif;
+                font-size: 4vw;
+                color: rgba(255, 255, 255, 0.7);
+                font-weight: 500;
+                text-transform: none;
+                margin: 0;
+            }
+            .scroll-content {
+                background: transparent;
+                -webkit-align-content: center;
+                -ms-flex-line-pack: center;
+                align-content: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                text-align: center;
+                padding-bottom: 0!important;
+            }
+            .select-md .select-placeholder {
+                color: #fff;
+            }
+            .select-md .select-icon .select-icon-inner {
+                left: 5px;
+                top: 50%;
+                margin-top: -3px;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-top: 5px solid;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                color: #fff;
+                pointer-events: none;
+            }
+            .item-md {
+                padding-left: 16px;
+                padding-right: 0;
+                padding-top: 10px;
+                position: relative;
+                font-size: 1.6rem;
+                font-weight: normal;
+                text-transform: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+                transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        }
+        page-itenerary-builder {
+            // .scroll-content {
+            //     background-image: url('http://cdn.wallpapersafari.com/55/23/wgRcLy.jpg');
+            //     background-repeat: no-repeat;
+            //     background-size: cover;
+            // }
+        }
+        page-filter-hotel1 {
+            .button-clear-md {
+                border-color: transparent;
+                color: #a6a6a6;
+                background-color: transparent;
+                padding: 0px;
+                box-shadow: none;
+                opacity: 1;
+            }
+            .button-outline-md {
+                border-width: 1px;
+                border-style: solid;
+                border-color: #a6a6a6;
+                color: #a6a6a6;
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+        page-guestconfirm-details {
+            .list-md .item-block .item-inner {
+                padding-right: 0px;
+                border-bottom: 1px solid #dedede;
+            }
+        }
+        page-daily-program {
+            .scroll-content {
+                background: white;
+            }
+        }
+        page-tour-operatorlist {
+            span.button-inner {
+                font-weight: 500;
+            }
+        }
+        page-mybooking {
+            .tab-button-text {
+                font-family: 'Poppins', sans-serif;
+                font-size: 2.5vw;
+                font-weight: 700;
+                color: white;
+            }
+        }
+        page-mybooking-cancel,
+        page-mybooking-com,
+        page-mybooking-complete,
+        page-mybooking-on,
+        page-mybooking-payment {
+            ion-card.card {
+                box-shadow: 2px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+                float: left;
+                /* important */
+                position: relative;
+                /* important(so we can absolutely position the description div */
+            }
+            .row {
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                padding-top: 0px;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+            .card-custom {
+                border: medium none;
+                border-radius: 5px;
+                display: block;
+                text-align: center;
+                margin: 0px;
+                padding: 0px;
+            }
+            .h2-title-header {
+                // font-size: 8vw;
+                // font-weight: normal;
+                // font-family: 'Open Sans', cursive;
+                // color: white;
+                top: -2vw;
+                font-family: 'Open Sans', cursive;
+                color: #fff;
+                font-size: 6vw;
+                font-weight: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                /* autoprefixer: off */
+                -webkit-box-orient: vertical;
+                /* autoprefixer: on */
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                line-height: 1.5;
+            }
+            .h3-subtitle-header {
+                font-family: 'Quicksand', cursive;
+                color: white;
+                font-size: 4vw;
+                font-weight: 600;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: inherit;
+                text-overflow: inherit;
+                white-space: normal;
+            }
+            .content-custom {
+                box-shadow: none;
+                background: rgba(0, 0, 0, 0.7);
+                right: 0;
+                display: block;
+                bottom: 0;
+                top: 50px;
+                font-size: 2em;
+                font-weight: 900;
+                text-align: left;
+                left: 0;
+                position: absolute;
+                padding: 0px 16px 10px 16px;
+            }
+            .button-inner {
+                text-transform: none;
+                font-family: 'Open Sans', cursive;
+                font-weight: 700;
+                color: white;
+                font-size: 3.3vw;
+            }
+            .custom-row {
+                padding: 0;
+                height: 20%;
+                .col {
+                    &:first-child {
+                        position: relative;
+                        padding: 0;
+                        .corner-ribbon {
+                            width: 800px;
+                            background: #22c1c3;
+                            /* fallback for old browsers */
+                            background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);
+                            /* Chrome 10-25, Safari 5.1-6 */
+                            background: linear-gradient(to right, #fdbb2d, #22c1c3);
+                            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                            position: absolute;
+                            top: 25px;
+                            left: -65px;
+                            text-align: center;
+                            line-height: 35px;
+                            letter-spacing: 0px;
+                            font-family: 'Open Sans', cursive;
+                            font-size: 20px;
+                            margin-left: 10px;
+                            font-weight: 700;
+                            color: white;
+                            -ms-transform: rotate(40deg);
+                            /* IE 9 */
+                            -webkit-transform: rotate(40deg);
+                            /* Chrome, Safari, Opera */
+                            transform: rotate(40deg);
+                        }
+                    }
+                }
+                [col-8] {
+                    -webkit-flex: 0 0 66.66667%;
+                    -ms-flex: 0 0 66.66667%;
+                    flex: 0 0 66.66667%;
+                    width: 66.66667%;
+                    max-width: 66.66667%;
+                    text-align: right;
+                    top: -5vw;
+                    right: -7vw;
+                }
+            }
+        }
+        page-confirm-booking {
+            span.button-inner {
+                text-transform: none;
+                font-size: 1.4rem;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+            }
+            .card-content-md {
+                padding: 0px 16px 13px 20px;
+                font-size: 1.4rem;
+                line-height: 1.5;
+            }
+        }
+        page-tour-details {
+            .card-content-md {
+                padding: 0px 16px 5px 2px;
+                font-size: 1.4rem;
+                line-height: 1.5;
+            }
+            .slide-pager .swiper-button-prev {
+                top: 55%;
+                left: 10px;
+                right: auto;
+            }
+            .slide-pager .swiper-button-next {
+                top: 55%;
+                left: auto;
+                right: 20px;
+            }
+        }
+        page-ready-dailyprogram {
+            .button-full-md {
+                margin-right: 0;
+                margin-left: 0;
+                border-right-width: 0px;
+                border-left-width: 0px;
+                border-radius: 0px; //height: 8vw;
+            }
+            .swiper-button-prev {
+                top: 40%;
+                left: 10px;
+                right: auto;
+            }
+            .swiper-button-next {
+                top: 40%;
+                left: auto;
+            }
+        }
+        page-daily-program {
+            .button-full-md {
+                margin-right: 0;
+                margin-left: 0;
+                border-right-width: 0px;
+                border-left-width: 0px;
+                border-radius: 0px; //height: 8vw;
+            }
+            .swiper-button-prev {
+                top: 40%;
+                left: 10px;
+                right: auto;
+            }
+            .swiper-button-next {
+                top: 40%;
+                left: auto;
+            }
+        }
+        .searchbar-md {
+            padding: 8px;
+            background: #4fd2c2;
+            font-family: 'Poppins', sans-serif;
+        }
+        .toolbar-background-md {
+            border-color: #4fd2c2;
+            background: #4fd2c2;
+        }
+        .bar-button-default-md,
+        .bar-button-clear-md-default,
+        .bar-button-md-default {
+            color: #ffffff;
+            background-color: transparent;
+        }
+        ion-navbar.toolbar {
+            min-height: 13vw;
+        }
+        .toolbar-title-md {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.8vw;
+            font-weight: 600;
+            padding: 0;
+        }
+        .tab-text {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-size: 6vw;
+            font-weight: 400; // font-size: 2rem;
+            // font-weight: 700;
+        }
+        .back-button-icon-md {
+            text-align: left;
+            text-align: start;
+            margin: 0;
+            padding: 0 6px;
+            font-size: 5vw;
+            font-weight: normal;
+            color: white;
+        }
+        button.back-button {
+            color: red;
+        }
+        .item-md ion-avatar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: .5vw solid #00aeef;
+        }
+        ion-icon.custom-color {
+            color: #4fd2c2;
+        }
+        ion-icon.custom-outline {
+            color: #00aeef;
+            font-size: 4vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+            border-color: 1px solid white;
+        }
+        ion-icon.custom-green {
+            color: $primary-color;
+            font-size: 3.5vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+        ion-icon.custom-blue {
+            color: $primary-color;
+            font-size: 3.5vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+        ion-icon.custom-yellow {
+            color: $primary-color;
+            font-size: 3.5vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+        ion-icon.custom-purple {
+            color: $primary-color;
+            font-size: 3.5vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+        ion-icon.custom-orange {
+            color: $primary-color;
+            font-size: 3.5vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+        ion-icon.custom-pink {
+            color: $primary-color;
+            font-size: 3.5vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+        ion-icon.custom-red {
+            color: $primary-color;
+            font-size: 3.5vw;
+            font-weight: bold;
+            margin-right: 1vw;
+            padding: 1.5vw;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+        ion-label.label.label-md[stacked] {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4vw;
+            color: black;
+            font-weight: 500;
+            text-transform: none;
+            margin: 0;
+        }
+        .button-inner {
+            text-transform: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        .label-md {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4vw;
+            color: black;
+            font-weight: 500;
+        }
+        .tabs-md .tabbar {
+            border-color: #4fd2c2;
+            background: #4fd2c2;
+        }
+        .tab-button[aria-selected=true] {
+            // text-decoration: underline !important;
+            font-family: 'Poppins', sans-serif;
+            color: blue;
+            font-size: 30px;
+            font-weight: 400;
+            border-style: solid;
+            border-bottom: 1.5px solid #f5f5ef;
+        }
+        ion-tab {
+            font-size: 90px;
+            color: yellow;
+        }
+        .tabs-md .tabbar {
+            background: #4fd2c2;
+        }
+        .line-break {
+            overflow: inherit;
+            text-overflow: inherit;
+            white-space: normal;
+        }
+        .text-input[disabled] {
+            opacity: 1;
+        }
+        .cover {
+            width: 100%;
+            object-fit: cover;
+        }
+        .button-full-md {
+            margin-right: 0;
+            margin-left: 0;
+            border-right-width: 0;
+            border-left-width: 0;
+            border-radius: 0;
+            height: 12vw;
+        }
+        .swiper-container-horizontal>.swiper-pagination-bullets {
+            left: 0;
+            bottom: 10px;
+            width: 100%;
+            bottom: 0;
+        } // Datetime
+        .alert-md .alert-title {
+            font-size: 5vw;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background-color: #4fd2c2;
+            padding: 3vw;
+            font-weight: 600;
+        }
+        .alert-md .alert-head {
+            text-align: left;
+            text-align: start;
+            padding: 0;
+            margin-bottom: 3vw;
+        }
+        .calendar[_ngcontent-c1] .day.selected[_ngcontent-c1],
+        .calendar[_ngcontent-c1] .day.selected[_ngcontent-c1]:hover,
+        .calendar[_ngcontent-c1] .day.selected.activated[_ngcontent-c1] {
+            background-color: #4fd2c2;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .calendar[_ngcontent-c1] .day.today[_ngcontent-c1] {
+            background-color: #e4e4e4;
+            border-radius: 5px;
+            color: black;
+            font-weight: 500;
+        }
+        input[_ngcontent-c1],
+        select[_ngcontent-c1] {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            text-align: center;
+            padding: .1em 5px 0;
+            font-family: 'Poppins', sans-serif;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            border: 1px solid #488aff;
+            border-radius: 5px;
+        }
+        .calendar[_ngcontent-c1] .day[_ngcontent-c1],
+        .calendar[_ngcontent-c1] .weekday[_ngcontent-c1] {
+            padding: 5px 5px;
+            font-family: 'Poppins', sans-serif;
+        } // Alert
+        .alert-button-group[_ngcontent-c0] {
+            flex-shrink: 0;
+            color: white;
+            background-color: transparent;
+        }
+        .alert-md .alert-button {
+            text-align: right;
+            text-align: end;
+            position: relative;
+            overflow: hidden;
+            margin: 0 0px 0 5px;
+            padding: 5px 10px 5px 10px;
+            border-radius: 2px;
+            font-weight: 500;
+            font-size: 3.5vw;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            color: white;
+            background-color: #488aff;
+            border-radius: 5px;
+        }
+        .alert-md .alert-message {
+            max-height: 240px;
+            font-size: 4vw;
+            font-family: 'Poppins', sans-serif;
+        }
+        .alert-md .alert-sub-title {
+            font-size: 4vw;
+            font-family: 'Poppins', sans-serif;
+        }
+        .alert-md .alert-message,
+        .alert-md .alert-input-group {
+            padding: 0vw 3vw;
+            color: black;
+            font-weight: normal;
+            text-align: center;
+        }
+        .alert-sub-title {
+            margin: 5px 0 0;
+            padding: 1vw 2vw 0 2vw;
+            font-weight: normal;
+        }
+        .alert-md .alert-button-group {
+            -webkit-flex-wrap: wrap-reverse;
+            -ms-flex-wrap: wrap-reverse;
+            flex-wrap: wrap-reverse;
+            -webkit-justify-content: flex-end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            padding: 8px 8px 8px 24px;
+        }
+        .alert-md .alert-wrapper {
+            max-width: 280px;
+            border-radius: 5px;
+            background-color: #fafafa;
+            box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+        }
+        .alert-md .alert-radio-group,
+        .alert-md .alert-checkbox-group {
+            position: relative;
+            overflow: auto;
+            max-height: 240px;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+        } // Alert Modal Confirm Booking
+        page-confirm-booking.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-allocation.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-commission.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-activityeat.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-activityeat.ion-page.show-page {
+            .datetime-text {
+                padding-bottom: 5px;
+                border-bottom: 2px rgba(0, 255, 0, 0.52) solid;
+                margin-left: 5vw;
+                font-weight: bold;
+            }
+            .custom-ioninput {
+                margin-left: 6vw;
+            }
+        }
+        page-modal-editattraction.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-editeat.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-editacommodation.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-movement.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-movement {
+            .header-md::after {
+                left: 0;
+                bottom: -5px;
+                background-position: left 0 top -2px;
+                position: absolute;
+                width: 100%;
+                height: 5px;
+                background-image: none;
+                background-repeat: repeat-x;
+                content: "";
+            }
+        }
+        page-modal-duration.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-modal-time.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-ready-dailyedit.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        page-fixedpackage-details {
+            ul {
+                list-style-type: disc;
+            }
+            ol {
+                padding-left: 5vw;
+            }
+        }
+        ionic2-datepicker .datepicker-wrapper .datepicker-header {
+            color: white;
+            background-color: #26A69A;
+            display: flex;
+            flex-flow: column;
+            height: 15%;
+        }
+        ionic2-datepicker .datepicker-wrapper .datepicker-header .date-header .datepicker-month {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left: 10px;
+            padding: 0px 5px 0px 5px;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 6vw;
+            font-weight: 600;
+        }
+        ionic2-datepicker.ion-page.show-page {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        ionic2-datepicker .datepicker-wrapper {
+            position: absolute;
+            top: 15%;
+            left: 45px; //display: block;
+            width: 75%;
+            height: 70%;
+        }
+        ionic2-datepicker .datepicker-wrapper .datepicker-header .weekday-header {
+            padding: 8px 10px 0px 10px;
+            background-color: #26A69A;
+            font-family: 'Poppins', sans-serif;
+            font-size: 4vw;
+            font-weight: 500;
+            color: white;
+        }
+        ionic2-datepicker .col {
+            padding: 7px 5px 5px 5px;
+            position: relative;
+            width: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 1px;
+            -webkit-flex-basis: 0;
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            -webkit-box-flex: 1;
+            -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            max-width: 100%;
+        }
+        .col.datepicker-year {
+            padding: 0px 5px 0px 5px;
+        }
+        ionic2-datepicker .datepicker-calendar .datepicker-controls {
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        .button-ios {
+            border-radius: 4px;
+            font-size: 1.6rem;
+            color: #26A69A;
+            background-color: transparent;
+            margin: 0.4rem 0.2rem;
+            padding: 0 1em;
+        }
+        ionic2-datepicker .row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            font-family: 'Poppins', sans-serif;
+            height: 55px;
+        }
+        span.col.calendar-cell {
+            font-family: 'Poppins', sans-serif;
+            color: #26A69A;
+        }
+        ionic2-datepicker .datepicker-calendar .calendar-wrapper .calendar-cell {
+            flex-flow: row wrap;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            color: #000;
+        }
+        ionic2-datepicker .datepicker-calendar {
+            height: calc(100% - (25% + 10px));
+            padding: 0 10px;
+        }
+        ionic2-datepicker .datepicker-calendar .calendar-wrapper .datepicker-selected {
+            background-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 20px;
+            color: #26A69A;
+        }
+        ionic2-datepicker .datepicker-calendar .calendar-wrapper .datepicker-temp {
+            background-color: #26A69A;
+            font-family: 'Poppins', sans-serif; //font-size: 4vw;
+            font-weight: 500;
+            color: white;
+            height: 35px;
+            border-radius: 50%;
+        }
+        ionic2-datepicker .datepicker-footer {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            margin-left: 46%;
+        }
+    }
