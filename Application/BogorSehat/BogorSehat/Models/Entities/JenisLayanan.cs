@@ -12,32 +12,23 @@ namespace BogorSehat.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Dokter
+    public partial class JenisLayanan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Dokter()
+        public JenisLayanan()
         {
-            this.JadwalLayanans = new HashSet<JadwalLayanan>();
-            this.Konsultasis = new HashSet<Konsultasi>();
+            this.Antrians = new HashSet<Antrian>();
+            this.LayananRS = new HashSet<LayananR>();
         }
     
-        public string NPA { get; set; }
-        public string Nama { get; set; }
-        public Nullable<System.DateTime> TanggalLahir { get; set; }
-        public string KotaLahir { get; set; }
-        public string Email { get; set; }
-        public string Alamat { get; set; }
-        public string Password { get; set; }
-        public string IdSpesialis { get; set; }
-        public Nullable<int> Agama { get; set; }
+        public string IdLayanan { get; set; }
+        public string JenisLayanan1 { get; set; }
+        public string Deskripsi { get; set; }
         public string ImageUrl { get; set; }
-        public string JenisKelamin { get; set; }
     
-        public virtual Agama Agama1 { get; set; }
-        public virtual Spesiali Spesiali { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
+        public virtual ICollection<Antrian> Antrians { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Konsultasi> Konsultasis { get; set; }
+        public virtual ICollection<LayananR> LayananRS { get; set; }
     }
 }

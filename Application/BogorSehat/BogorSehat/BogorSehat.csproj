@@ -165,17 +165,38 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\DoktersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PasiensController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admins.cs" />
+    <Compile Include="Models\Dokters.cs" />
+    <Compile Include="Models\Entities\Admin.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Agama.cs">
       <DependentUpon>ModelEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\Antrian.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Dokter.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\JadwalLayanan.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\JenisLayanan.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Konsultasi.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\LayananR.cs">
       <DependentUpon>ModelEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\ModelEntities.Context.cs">
@@ -196,10 +217,16 @@
     <Compile Include="Models\Entities\Pasien.cs">
       <DependentUpon>ModelEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\RumahSakit.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Spesiali.cs">
       <DependentUpon>ModelEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pasiens.cs" />
+    <Compile Include="Models\Persons.cs" />
+    <Compile Include="Models\Spesialis.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

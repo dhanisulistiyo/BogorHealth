@@ -22,19 +22,19 @@ namespace BogorSehat.Controllers
         {
             List<Pasiens> pasien = null;
             pasien = db.Pasiens.Select(b => new Pasiens
-                                    {
-                                        NIK = b.NIK,
-                                        Nama = b.Nama,
-                                        TanggalLahir = b.TanggalLahir,
-                                        Alamat = b.Alamat,
-                                        KotaLahir = b.KotaLahir,
-                                        Email = b.Email,
-                                        JenisKelamin = b.JenisKelamin,
-                                        Pekerjaan = b.Pekerjaan,
-                                        StatusPernikahan = b.StatusPernikahan,
-                                        ImageUrl = b.ImageUrl,
-                                        Agama = b.Agama1.Nama
-                                    }).ToList();
+            {
+                NIK = b.NIK,
+                Nama = b.Nama,
+                TanggalLahir = b.TanggalLahir,
+                Alamat = b.Alamat,
+                KotaLahir = b.KotaLahir,
+                Email = b.Email,
+                JenisKelamin = b.JenisKelamin,
+                Pekerjaan = b.Pekerjaan,
+                StatusPernikahan = b.StatusPernikahan,
+                ImageUrl = b.ImageUrl,
+                Agama = b.Agama1.Nama
+            }).ToList();
             return pasien.AsQueryable();
         }
 
@@ -42,13 +42,25 @@ namespace BogorSehat.Controllers
         [ResponseType(typeof(Pasien))]
         public IHttpActionResult GetPasien(string id)
         {
-            Pasien pasien = db.Pasiens.Find(id);
-            if (pasien == null)
+            var b = db.Pasiens.Find(id);
+            if (b == null)
             {
                 return NotFound();
             }
 
-            return Ok(pasien);
+            Pasiens pas = new Pasiens();
+            pas.NIK = b.NIK;
+            pas.Nama = b.Nama;
+            pas.TanggalLahir = b.TanggalLahir;
+            pas.Alamat = b.Alamat;
+            pas.KotaLahir = b.KotaLahir;
+            pas.Email = b.Email;
+            pas.JenisKelamin = b.JenisKelamin;
+            pas.Pekerjaan = b.Pekerjaan;
+            pas.StatusPernikahan = b.StatusPernikahan;
+            pas.ImageUrl = b.ImageUrl;
+            pas.Agama = b.Agama1.Nama;
+            return Ok(pas);
         }
 
         // PUT: api/Pasiens/5
@@ -86,35 +98,6 @@ namespace BogorSehat.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Pasiens
-        [ResponseType(typeof(Pasien))]
-        public IHttpActionResult PostPasien(Pasien pasien)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Pasiens.Add(pasien);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (PasienExists(pasien.NIK))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = pasien.NIK }, pasien);
-        }
 
         // DELETE: api/Pasiens/5
         [ResponseType(typeof(Pasien))]
@@ -141,7 +124,7 @@ namespace BogorSehat.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PasienExists(string id)
+        public bool PasienExists(string id)
         {
             return db.Pasiens.Count(e => e.NIK == id) > 0;
         }
