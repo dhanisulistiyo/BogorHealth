@@ -1,18 +1,46 @@
-<ion-header>
-  <ion-navbar>
+<ion-header no-border [class.opaque]="!showToolbar">
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title [hidden]="!showToolbar">
+      Home
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+<div class="scroll-content" style="padding-top:0px">
+  <ion-content fullscreen="true" style="padding-top: 0px;" (ionScroll)="onScroll($event)">
+    <div class="slide-pager" style="margin-left: -18px; width:110%; overflow: visible; margin-top: -10px;">
+      <ion-slides autoplay="3000" pager="true" loop="true" speed="2000" [effect]="'fade'">
+        <ion-slide>
+          <ion-card>
+            <img src="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F4bddfb6e-fa84-11e6-9516-2d969e0d3b65?source=ig_stream&fit=scale-down&compression=best&width=500" style="height:200px; width:100%;"
+            />
+          </ion-card>
+        </ion-slide>
+        <ion-slide>
+          <ion-card>
+            <img src="http://rta.org.af/eng/wp-content/uploads/2017/06/occupational-health.jpg" style="height:200px; width:100%;"
+            />
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
-</ion-content>
+    <ion-card (click)="gotoListHospital()">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpoDPMMoYKMd9bFKfW8bUZ5ZkzytOfXtjlqEYKtJry-jaLAUjP0g" />
+        <div class="card-title">Antrian</div>
+        <div class="card-subtitle">Mendaftar Antrian</div>
+    </ion-card>
+
+    <ion-card (click)="gotoChat()">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpoDPMMoYKMd9bFKfW8bUZ5ZkzytOfXtjlqEYKtJry-jaLAUjP0g" />
+      <div class="card-title">Chat</div>
+      <div class="card-subtitle">Konsultasi dengan Dokter</div>
+    </ion-card>
+
+  </ion-content>
+</div>
+

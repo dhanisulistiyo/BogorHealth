@@ -1,0 +1,75 @@
+<!--
+  Generated template for the ChatHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>chat-history</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="outer-content">
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item (click)="gotoDetailChat()">
+        <ion-avatar item-start>
+          <img src="https://media.licdn.com/media/AAEAAQAAAAAAAAfEAAAAJGI3NmE5MzMyLWM1MzEtNDliZC1hNDE1LWZlOWI4OTM5NmQ3OA.jpg">
+        </ion-avatar>
+        <h2>Faruq Shandi S.Pg</h2>
+        <p>Dokter Gigi</p>
+        <ion-note item-end>3:43 pm</ion-note>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start>
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://media.licdn.com/media/AAEAAQAAAAAAAAfEAAAAJGI3NmE5MzMyLWM1MzEtNDliZC1hNDE1LWZlOWI4OTM5NmQ3OA.jpg">
+        </ion-avatar>
+        <h2>Faruq Shandi S.Pg</h2>
+        <p>Dokter Gigi</p>
+        <ion-note item-end>3:43 pm</ion-note>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start>
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://media.licdn.com/media/AAEAAQAAAAAAAAfEAAAAJGI3NmE5MzMyLWM1MzEtNDliZC1hNDE1LWZlOWI4OTM5NmQ3OA.jpg">
+        </ion-avatar>
+        <h2>Faruq Shandi S.Pg</h2>
+        <p>Dokter Gigi</p>
+        <ion-note item-end>3:43 pm</ion-note>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start>
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button (click)="gotoListDokter()" ion-fab color="blue"><ion-icon ios="ios-mail" md="md-mail"></ion-icon></button>
+  </ion-fab>
+</ion-content>

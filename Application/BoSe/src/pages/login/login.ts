@@ -1,5 +1,6 @@
+import { TabsHomePage } from './../tabs-home/tabs-home';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 /**
@@ -14,9 +15,9 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  registerCredentials = { companyid:'' ,username: '', password: '' };
+  registerCredentials = { username: '', password: '' };
   constructor(public nav: NavController,
-    private alertCtrl: AlertController,public load : LoadingController, 
+    private alertCtrl: AlertController, public load: LoadingController,
     public menu: MenuController) {
   }
 
@@ -25,29 +26,28 @@ export class LoginPage {
   }
 
 
-public createAccount() {
-    
-}
+  public createAccount() {
 
-public login() {
-     let loader = this.load.create({
-        content: 'Please wait...'
+  }
+
+  public login() {
+    let loader = this.load.create({
+      content: 'Please wait...'
     });
-    
     loader.present();
-   
-}
+    this.nav.setRoot(TabsHomePage);
+    loader.dismiss();
+    
 
-showError(text) {
+  }
+
+  showError(text) {
     let alert = this.alertCtrl.create({
-        title: 'Failed!',
-        subTitle: text,
-        buttons: ['OK']
+      title: 'Failed!',
+      subTitle: text,
+      buttons: ['OK']
     });
     alert.present();
-}
-setText(ev){
-    console.log(ev)
-}
+  }
 
 }

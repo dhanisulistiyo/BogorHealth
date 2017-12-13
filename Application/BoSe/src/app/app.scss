@@ -142,319 +142,8 @@
                 text-align: left;
             }
         }
-        page-home-screen {
-            ion-page.show-page {
-                background: transparent;
-                opacity: 1;
-            }
-        }
-        page-login .scroll-content {
-            background: transparent;
-            -webkit-align-content: center;
-            -ms-flex-line-pack: center;
-            align-content: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            text-align: center;
-            padding-bottom: 0!important;
-            margin-bottom: 0!important;
-        }
-        page-register {
-            ion-label.label.label-md[stacked] {
-                font-family: 'Poppins', sans-serif;
-                font-size: 4vw;
-                color: rgba(255, 255, 255, 0.7);
-                font-weight: 500;
-                text-transform: none;
-                margin: 0;
-            }
-            .scroll-content {
-                background: transparent;
-                -webkit-align-content: center;
-                -ms-flex-line-pack: center;
-                align-content: center;
-                -webkit-justify-content: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                text-align: center;
-                padding-bottom: 0!important;
-            }
-            .select-md .select-placeholder {
-                color: #fff;
-            }
-            .select-md .select-icon .select-icon-inner {
-                left: 5px;
-                top: 50%;
-                margin-top: -3px;
-                position: absolute;
-                width: 0;
-                height: 0;
-                border-top: 5px solid;
-                border-right: 5px solid transparent;
-                border-left: 5px solid transparent;
-                color: #fff;
-                pointer-events: none;
-            }
-            .item-md {
-                padding-left: 16px;
-                padding-right: 0;
-                padding-top: 10px;
-                position: relative;
-                font-size: 1.6rem;
-                font-weight: normal;
-                text-transform: none;
-                -webkit-box-shadow: none;
-                box-shadow: none;
-                -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-                transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            }
-        }
-        page-itenerary-builder {
-            // .scroll-content {
-            //     background-image: url('http://cdn.wallpapersafari.com/55/23/wgRcLy.jpg');
-            //     background-repeat: no-repeat;
-            //     background-size: cover;
-            // }
-        }
-        page-filter-hotel1 {
-            .button-clear-md {
-                border-color: transparent;
-                color: #a6a6a6;
-                background-color: transparent;
-                padding: 0px;
-                box-shadow: none;
-                opacity: 1;
-            }
-            .button-outline-md {
-                border-width: 1px;
-                border-style: solid;
-                border-color: #a6a6a6;
-                color: #a6a6a6;
-                background-color: transparent;
-                box-shadow: none;
-            }
-        }
-        page-guestconfirm-details {
-            .list-md .item-block .item-inner {
-                padding-right: 0px;
-                border-bottom: 1px solid #dedede;
-            }
-        }
-        page-daily-program {
-            .scroll-content {
-                background: white;
-            }
-        }
-        page-tour-operatorlist {
-            span.button-inner {
-                font-weight: 500;
-            }
-        }
-        page-mybooking {
-            .tab-button-text {
-                font-family: 'Poppins', sans-serif;
-                font-size: 2.5vw;
-                font-weight: 700;
-                color: white;
-            }
-        }
-        page-mybooking-cancel,
-        page-mybooking-com,
-        page-mybooking-complete,
-        page-mybooking-on,
-        page-mybooking-payment {
-            ion-card.card {
-                box-shadow: 2px;
-                background: rgba(0, 0, 0, 0.5);
-                border-radius: 5px;
-                float: left;
-                /* important */
-                position: relative;
-                /* important(so we can absolutely position the description div */
-            }
-            .row {
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-                padding-top: 0px;
-                -webkit-flex-wrap: wrap;
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-            }
-            .card-custom {
-                border: medium none;
-                border-radius: 5px;
-                display: block;
-                text-align: center;
-                margin: 0px;
-                padding: 0px;
-            }
-            .h2-title-header {
-                // font-size: 8vw;
-                // font-weight: normal;
-                // font-family: 'Open Sans', cursive;
-                // color: white;
-                top: -2vw;
-                font-family: 'Open Sans', cursive;
-                color: #fff;
-                font-size: 6vw;
-                font-weight: normal;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                /* autoprefixer: off */
-                -webkit-box-orient: vertical;
-                /* autoprefixer: on */
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: normal;
-                line-height: 1.5;
-            }
-            .h3-subtitle-header {
-                font-family: 'Quicksand', cursive;
-                color: white;
-                font-size: 4vw;
-                font-weight: 600;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: inherit;
-                text-overflow: inherit;
-                white-space: normal;
-            }
-            .content-custom {
-                box-shadow: none;
-                background: rgba(0, 0, 0, 0.7);
-                right: 0;
-                display: block;
-                bottom: 0;
-                top: 50px;
-                font-size: 2em;
-                font-weight: 900;
-                text-align: left;
-                left: 0;
-                position: absolute;
-                padding: 0px 16px 10px 16px;
-            }
-            .button-inner {
-                text-transform: none;
-                font-family: 'Open Sans', cursive;
-                font-weight: 700;
-                color: white;
-                font-size: 3.3vw;
-            }
-            .custom-row {
-                padding: 0;
-                height: 20%;
-                .col {
-                    &:first-child {
-                        position: relative;
-                        padding: 0;
-                        .corner-ribbon {
-                            width: 800px;
-                            background: #22c1c3;
-                            /* fallback for old browsers */
-                            background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);
-                            /* Chrome 10-25, Safari 5.1-6 */
-                            background: linear-gradient(to right, #fdbb2d, #22c1c3);
-                            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-                            position: absolute;
-                            top: 25px;
-                            left: -65px;
-                            text-align: center;
-                            line-height: 35px;
-                            letter-spacing: 0px;
-                            font-family: 'Open Sans', cursive;
-                            font-size: 20px;
-                            margin-left: 10px;
-                            font-weight: 700;
-                            color: white;
-                            -ms-transform: rotate(40deg);
-                            /* IE 9 */
-                            -webkit-transform: rotate(40deg);
-                            /* Chrome, Safari, Opera */
-                            transform: rotate(40deg);
-                        }
-                    }
-                }
-                [col-8] {
-                    -webkit-flex: 0 0 66.66667%;
-                    -ms-flex: 0 0 66.66667%;
-                    flex: 0 0 66.66667%;
-                    width: 66.66667%;
-                    max-width: 66.66667%;
-                    text-align: right;
-                    top: -5vw;
-                    right: -7vw;
-                }
-            }
-        }
-        page-confirm-booking {
-            span.button-inner {
-                text-transform: none;
-                font-size: 1.4rem;
-                font-family: 'Poppins', sans-serif;
-                font-weight: 700;
-            }
-            .card-content-md {
-                padding: 0px 16px 13px 20px;
-                font-size: 1.4rem;
-                line-height: 1.5;
-            }
-        }
-        page-tour-details {
-            .card-content-md {
-                padding: 0px 16px 5px 2px;
-                font-size: 1.4rem;
-                line-height: 1.5;
-            }
-            .slide-pager .swiper-button-prev {
-                top: 55%;
-                left: 10px;
-                right: auto;
-            }
-            .slide-pager .swiper-button-next {
-                top: 55%;
-                left: auto;
-                right: 20px;
-            }
-        }
-        page-ready-dailyprogram {
-            .button-full-md {
-                margin-right: 0;
-                margin-left: 0;
-                border-right-width: 0px;
-                border-left-width: 0px;
-                border-radius: 0px; //height: 8vw;
-            }
-            .swiper-button-prev {
-                top: 40%;
-                left: 10px;
-                right: auto;
-            }
-            .swiper-button-next {
-                top: 40%;
-                left: auto;
-            }
-        }
-        page-daily-program {
-            .button-full-md {
-                margin-right: 0;
-                margin-left: 0;
-                border-right-width: 0px;
-                border-left-width: 0px;
-                border-radius: 0px; //height: 8vw;
-            }
-            .swiper-button-prev {
-                top: 40%;
-                left: 10px;
-                right: auto;
-            }
-            .swiper-button-next {
-                top: 40%;
-                left: auto;
-            }
-        }
+
+
         .searchbar-md {
             padding: 8px;
             background: #4fd2c2;
@@ -602,13 +291,13 @@
             font-weight: 500;
         }
         .tabs-md .tabbar {
-            border-color: #4fd2c2;
-            background: #4fd2c2;
+            border-color: blue;
+            background: blue;
         }
         .tab-button[aria-selected=true] {
             // text-decoration: underline !important;
             font-family: 'Poppins', sans-serif;
-            color: blue;
+            color: white;
             font-size: 30px;
             font-weight: 400;
             border-style: solid;
@@ -619,8 +308,9 @@
             color: yellow;
         }
         .tabs-md .tabbar {
-            background: #4fd2c2;
+            background: #488aff;
         }
+
         .line-break {
             overflow: inherit;
             text-overflow: inherit;
@@ -763,71 +453,7 @@
             border-top: 1px solid transparent;
             border-bottom: 1px solid transparent;
         } // Alert Modal Confirm Booking
-        page-confirm-booking.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-allocation.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-commission.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-activityeat.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-activityeat.ion-page.show-page {
-            .datetime-text {
-                padding-bottom: 5px;
-                border-bottom: 2px rgba(0, 255, 0, 0.52) solid;
-                margin-left: 5vw;
-                font-weight: bold;
-            }
-            .custom-ioninput {
-                margin-left: 6vw;
-            }
-        }
-        page-modal-editattraction.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-editeat.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-editacommodation.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-movement.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-movement {
-            .header-md::after {
-                left: 0;
-                bottom: -5px;
-                background-position: left 0 top -2px;
-                position: absolute;
-                width: 100%;
-                height: 5px;
-                background-image: none;
-                background-repeat: repeat-x;
-                content: "";
-            }
-        }
-        page-modal-duration.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-modal-time.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-ready-dailyedit.ion-page.show-page {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        page-fixedpackage-details {
-            ul {
-                list-style-type: disc;
-            }
-            ol {
-                padding-left: 5vw;
-            }
-        }
+
         ionic2-datepicker .datepicker-wrapper .datepicker-header {
             color: white;
             background-color: #26A69A;
@@ -941,5 +567,21 @@
             justify-content: space-between;
             height: 60px;
             margin-left: 46%;
+        }
+
+        page-login .scroll-content {
+            overflow-x: hidden;
+            overflow-y: hidden;
+            align-content: center;
+            justify-content: center;
+            text-align: center;
+            background: transparent;
+            -webkit-align-content: center;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            padding-bottom: 0!important;
+            margin-bottom: 0!important;
         }
     }

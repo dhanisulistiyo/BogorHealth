@@ -1,3 +1,86 @@
 page-home {
 
+    .opaque {
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+    }
+    .opaque .toolbar-background {
+        background-color: transparent; // background-color: rgba(0, 0, 0, 0.7);
+        border: none;
+    }
+    .scroll-content {
+        padding-top: 0px;
+    }
+    
+    ion-card {
+        position: relative;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+    
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+      }
+    
+      .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 52%;
+        width: 100%;
+        color: #fff;
+      }
+
+    .slide-pager {
+        min-height: 200px;
+        height: auto;
+        width: 100%;
+        position: relative;
+        .card-content {
+            box-shadow: none;
+            background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            right: 0;
+            bottom: 0;
+            font-size: 2em;
+            font-weight: 900;
+            text-align: left;
+            left: 0;
+            position: absolute;
+            padding: 50px 5px 10px 5px;
+        }
+        .card-md h2 {
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            display: block;
+            /* Fallback for non-webkit */
+            display: -webkit-box;
+            max-width: 400px;
+            /* Fallback for non-webkit */
+            margin: 0 auto;
+            letter-spacing: 1px;
+            padding: 0px 10px 0px 10px;
+            font-size: 3rem;
+        }
+        .card-md h3 {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-size: 1.7rem;
+            letter-spacing: 1;
+            font-weight: 600;
+            padding: 0px 10px 0px 10px;
+        }
+    }
+
+
 }
