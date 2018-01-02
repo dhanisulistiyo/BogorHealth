@@ -1,3 +1,5 @@
+import { DetailDokterPage } from './../detail-dokter/detail-dokter';
+import { DokterServiceProvider } from './../../providers/dokter-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -13,12 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'list-dokter.html',
 })
 export class ListDokterPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  listDokter
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dokter : DokterServiceProvider) {
+    this.listDokter = []
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter(){
     console.log('ionViewDidLoad ListDokterPage');
+    this.dokter.getAllDokter().subscribe(data => {
+      this.listDokter = data.json();
+      console.log(data.json())
+    });
   }
+
+  detailDokter(doc){
+    this.navCtrl.push(DetailDokterPage,{ doc })
+  }
+
 
 }

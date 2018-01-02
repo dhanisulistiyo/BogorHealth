@@ -13,8 +13,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail-dokter.html',
 })
 export class DetailDokterPage {
-
+  Dokter
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.Dokter = this.navParams.data.doc;
+    console.log(this.Dokter)
   }
 
   ionViewDidLoad() {

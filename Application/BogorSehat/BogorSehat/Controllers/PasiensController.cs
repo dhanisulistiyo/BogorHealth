@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using BogorSehat.Models.Entities;
 using BogorSehat.Models;
+using System.Web.Http.Cors;
 
 namespace BogorSehat.Controllers
 {

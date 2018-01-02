@@ -1,3 +1,4 @@
+import { HospitalServiceProvider } from './../../providers/hospital-service';
 import { ListServicesPage } from './../list-services/list-services';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -15,16 +16,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'list-hospital.html',
 })
 export class ListHospitalPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  Hospital
+  constructor(public navCtrl: NavController, public navParams: NavParams, public hos: HospitalServiceProvider) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter(){
     console.log('ionViewDidLoad ListHospitalPage');
+    this.hos.getAllHospital().subscribe(data=>{
+      console.log(data)
+      this.Hospital = data.json();
+    })
+    
   }
-
-  gotoService(){
-    this.navCtrl.push(ListServicesPage)
+  gotoService(id){
+    this.navCtrl.push(ListServicesPage, {id})
   }
 
 }

@@ -17,6 +17,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service';
 import { ChatHistoryPage } from '../pages/chat-history/chat-history';
 import { ListHospitalPage } from '../pages/list-hospital/list-hospital';
+import { ConfigProvider } from '../providers/config';
+import { HttpModule } from '@angular/http';
+import { HospitalServiceProvider } from '../providers/hospital-service';
+import { LayananServiceProvider } from '../providers/layanan-service';
+import { DokterServiceProvider } from '../providers/dokter-service';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +41,7 @@ import { ListHospitalPage } from '../pages/list-hospital/list-hospital';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {
       platforms: {
         ios: {
@@ -72,7 +79,11 @@ import { ListHospitalPage } from '../pages/list-hospital/list-hospital';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    ConfigProvider,
+    HospitalServiceProvider,
+    LayananServiceProvider,
+    DokterServiceProvider
   ]
 })
 export class AppModule {}

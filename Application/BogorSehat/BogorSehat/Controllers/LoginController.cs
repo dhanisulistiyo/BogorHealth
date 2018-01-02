@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace BogorSehat.Controllers
@@ -17,6 +18,7 @@ namespace BogorSehat.Controllers
         public string Username { get; set; }
         public string Password { get; set; }
     }
+    [EnableCors(origins: "http://localhost:53939/", headers: "*", methods: "*")]
     public class LoginController : ApiController
     {
         private BogorHealthEntities db = new BogorHealthEntities();

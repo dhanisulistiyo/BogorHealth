@@ -14,105 +14,25 @@
 
 <ion-content fullscreen>
 
-  <h5 class="custom-h5">Pilih layanan rumah sakit</h5>
-  <ion-card class="page-hotel-roomservice1">
+  <h5 class="custom-h5" *ngIf="ListLayanan.length > 0" >Pilih 1 dari {{ListLayanan.length}} layanan rumah sakit</h5>
+  <ion-card class="page-hotel-roomservice1" *ngFor="let item of ListLayanan" >
     <img src="http://rsimalahayati.com/wp-content/uploads/2017/05/internist.jpg" style="height: 170px;" />
     <ion-card-content class="content-custom" style="top: 0px;">
       <ion-card-title class="card-custom">
-        <h2 class="h2-title-header">Penyakit Dalam</h2>
-        <h3 class="h3-subtitle-header">Penyakit Dalam</h3>
+        <h2 class="h2-title-header">{{item.Layanan.JenisLayanan}}</h2>
+        <!-- <h3 class="h3-subtitle-header">Penyakit Dalam</h3> -->
       </ion-card-title>
       <ion-row>
-        <ion-col style="text-align:center;" col-5> 
+        <ion-col style="text-align:center;" col-5>
           <button ion-button small>Jadwal Layanan</button>
         </ion-col>
-        <ion-col col-2>  
+        <ion-col col-2>
         </ion-col>
         <ion-col style="text-align:center;" col-5>
-            <button ion-button small>Booking Antrian</button>
+          <button ion-button small>Booking Antrian</button>
         </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
-
-  <ion-card class="page-hotel-roomservice1">
-      <img src="http://rsimalahayati.com/wp-content/uploads/2017/05/internist.jpg" style="height: 170px;" />
-      <ion-card-content class="content-custom" style="top: 0px;">
-        <ion-card-title class="card-custom">
-          <h2 class="h2-title-header">Penyakit Dalam</h2>
-          <h3 class="h3-subtitle-header">Penyakit Dalam</h3>
-        </ion-card-title>
-        <ion-row>
-          <ion-col style="text-align:center;" col-5> 
-            <button ion-button small>Jadwal Layanan</button>
-          </ion-col>
-          <ion-col col-2>  
-          </ion-col>
-          <ion-col style="text-align:center;" col-5>
-              <button ion-button small>Booking Antrian</button>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card class="page-hotel-roomservice1">
-        <img src="http://rsimalahayati.com/wp-content/uploads/2017/05/internist.jpg" style="height: 170px;" />
-        <ion-card-content class="content-custom" style="top: 0px;">
-          <ion-card-title class="card-custom">
-            <h2 class="h2-title-header">Penyakit Dalam</h2>
-            <h3 class="h3-subtitle-header">Penyakit Dalam</h3>
-          </ion-card-title>
-          <ion-row>
-            <ion-col style="text-align:center;" col-5> 
-              <button ion-button small>Jadwal Layanan</button>
-            </ion-col>
-            <ion-col col-2>  
-            </ion-col>
-            <ion-col style="text-align:center;" col-5>
-                <button ion-button small>Booking Antrian</button>
-            </ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card class="page-hotel-roomservice1">
-          <img src="http://rsimalahayati.com/wp-content/uploads/2017/05/internist.jpg" style="height: 170px;" />
-          <ion-card-content class="content-custom" style="top: 0px;">
-            <ion-card-title class="card-custom">
-              <h2 class="h2-title-header">Penyakit Dalam</h2>
-              <h3 class="h3-subtitle-header">Penyakit Dalam</h3>
-            </ion-card-title>
-            <ion-row>
-              <ion-col style="text-align:center;" col-5> 
-                <button ion-button small>Jadwal Layanan</button>
-              </ion-col>
-              <ion-col col-2>  
-              </ion-col>
-              <ion-col style="text-align:center;" col-5>
-                  <button ion-button small>Booking Antrian</button>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card class="page-hotel-roomservice1">
-            <img src="http://rsimalahayati.com/wp-content/uploads/2017/05/internist.jpg" style="height: 170px;" />
-            <ion-card-content class="content-custom" style="top: 0px;">
-              <ion-card-title class="card-custom">
-                <h2 class="h2-title-header">Penyakit Dalam</h2>
-                <h3 class="h3-subtitle-header">Penyakit Dalam</h3>
-              </ion-card-title>
-              <ion-row>
-                <ion-col style="text-align:center;" col-5> 
-                  <button ion-button small>Jadwal Layanan</button>
-                </ion-col>
-                <ion-col col-2>  
-                </ion-col>
-                <ion-col style="text-align:center;" col-5>
-                    <button ion-button small>Booking Antrian</button>
-                </ion-col>
-              </ion-row>
-            </ion-card-content>
-          </ion-card>
 
 </ion-content>

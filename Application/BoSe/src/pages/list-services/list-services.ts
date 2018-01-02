@@ -1,3 +1,5 @@
+import { LayananServiceProvider } from './../../providers/layanan-service';
+import { ConfigProvider } from './../../providers/config';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -13,12 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'list-services.html',
 })
 export class ListServicesPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  id
+  ListLayanan = []
+  constructor(public navCtrl: NavController, public navParams: NavParams, public layanan : LayananServiceProvider) {
+   this.id = this.navParams.data['id']
   }
 
-  ionViewDidLoad() {
+
+  ionViewWillEnter(){
     console.log('ionViewDidLoad ListServicesPage');
+    this.layanan.getServiceHospital(this.id).subscribe(data=>{
+      this.ListLayanan = data.json();
+    })
   }
 
 }

@@ -25,7 +25,7 @@ page-list-hospital {
     [col-8] {
         padding: 0px;
     }
-    [col-4] {
+    [col-12] {
         padding: 5px;
     }
     .button-inner {
@@ -283,6 +283,10 @@ page-list-hospital {
             flex: 0 0 33.33333%;
             width: 33.33333%;
             max-width: 33.33333%;
+            padding: 0 2vw;
+            bottom: 1vw;
+        }
+        [col-12] {
             padding: 0 2vw;
             bottom: 1vw;
         }

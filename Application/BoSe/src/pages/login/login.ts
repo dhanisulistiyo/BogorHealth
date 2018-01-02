@@ -1,3 +1,4 @@
+import { AuthServiceProvider } from './../../providers/auth-service';
 import { TabsHomePage } from './../tabs-home/tabs-home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
@@ -15,14 +16,14 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  registerCredentials = { username: '', password: '' };
+  registerCredentials = { Username: null, Password: null };
   constructor(public nav: NavController,
     private alertCtrl: AlertController, public load: LoadingController,
-    public menu: MenuController) {
+    public menu: MenuController, private auth: AuthServiceProvider) {
   }
-
-  ionViewDidLoad() {
+  ionViewDidEnter(){
     console.log('ionViewDidLoad LoginPage');
+    this.registerCredentials = { Username: null, Password: null };
   }
 
 
@@ -35,10 +36,17 @@ export class LoginPage {
       content: 'Please wait...'
     });
     loader.present();
-    this.nav.setRoot(TabsHomePage);
-    loader.dismiss();
-    
-
+    this.auth.loginPasien(this.registerCredentials).subscribe(data=>{
+      console.log(data.json())
+      this.auth.storeUserCredentials(data.json())
+      this.auth.loadToken()
+      loader.dismiss();
+      this.nav.setRoot(TabsHomePage);
+    }, err=>{
+      console.log(err.json());
+      this.showError(err.json().Message)
+      loader.dismiss();
+    })
   }
 
   showError(text) {

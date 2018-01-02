@@ -131,10 +131,36 @@ namespace UploadExcelBogorSehat
 
             foreach (LayananR dok in sp)
             {
-                db.LayananRS.Add(dok);
-                db.SaveChanges();
-                Console.WriteLine("Ok");
+               var l =  db.LayananRS.Find(dok.IdLayananRS);
+                if (l == null)
+                {
+                    db.LayananRS.Add(dok);
+                    db.SaveChanges();
+                    Console.WriteLine("Ok");
+                 }
             }
+        }
+
+
+        public static void uploadJadwal()
+        {
+            BogorHealthEntities db = new BogorHealthEntities();
+            string pathToExcelFile = "" + @"D:\rsud.xlsx";
+            string sheetName = "Jadwal Layanan";
+
+
+            var excelFile = new ExcelQueryFactory(pathToExcelFile);
+            var artistAlbums = from a in excelFile.Worksheet(sheetName) select a;
+            IQueryable<JadwalLayanan> sp = (from a in excelFile.Worksheet<JadwalLayanan>(sheetName) select a);
+
+            foreach (JadwalLayanan dok in sp)
+            {
+                    db.JadwalLayanans.Add(dok);
+                    db.SaveChanges();
+                    Console.WriteLine("Ok");
+                
+            }
+
         }
 
     }

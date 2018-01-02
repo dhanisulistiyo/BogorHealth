@@ -7,43 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>list-dokter</ion-title>
+    <ion-title>Contact Dokter</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <ion-item>
+  <ion-item *ngFor="let item of listDokter" >
     <ion-thumbnail item-start>
-      <img src="https://cdn.brilio.net/news/2017/01/06/113782/551620-calon-dokter-muda-ini-cantiknya-bikin-cowok-rela-pura-pura-sakit.jpg">
+      <img src="data:image/jpeg;base64,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">
     </ion-thumbnail>
-    <h2>Ilma Soraya</h2>
-    <p>Dokter Umum</p>
-    <button ion-button clear item-end>Profil</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-start>
-      <img src="https://cdn.brilio.net/news/2017/01/06/113782/551620-calon-dokter-muda-ini-cantiknya-bikin-cowok-rela-pura-pura-sakit.jpg">
-    </ion-thumbnail>
-    <h2>Ilma Soraya</h2>
-    <p>Dokter Umum</p>
-    <button ion-button clear item-end>Profil</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-start>
-      <img src="https://cdn.brilio.net/news/2017/01/06/113782/551620-calon-dokter-muda-ini-cantiknya-bikin-cowok-rela-pura-pura-sakit.jpg">
-    </ion-thumbnail>
-    <h2>Ilma Soraya</h2>
-    <p>Dokter Umum</p>
-    <button ion-button clear item-end>Profil</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-start>
-      <img src="https://cdn.brilio.net/news/2017/01/06/113782/551620-calon-dokter-muda-ini-cantiknya-bikin-cowok-rela-pura-pura-sakit.jpg">
-    </ion-thumbnail>
-    <h2>Ilma Soraya</h2>
-    <p>Dokter Umum</p>
-    <button ion-button clear item-end>Profil</button>
+    <h2>{{item.Nama}} {{item.Spesiali.Gelar}}</h2>
+    <p>{{item.Spesiali.NamaSpesialis}}</p>
+    <button ion-button clear item-end (click)="detailDokter(item)">Profil</button>
   </ion-item>
 </ion-content>
