@@ -1,2 +1,2 @@
 # BogorHealth
-BOgor super sehat...
+Bogor Super Sehat
