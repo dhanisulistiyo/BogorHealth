@@ -290,9 +290,10 @@
             color: black;
             font-weight: 500;
         }
-        .tabs-md .tabbar {
-            border-color: blue;
-            background: blue;
+        .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+            color: white;
+            -webkit-transform: translate3d(0, -2px, 0);
+            transform: translate3d(0, -2px, 0);
         }
         .tab-button[aria-selected=true] {
             // text-decoration: underline !important;
@@ -309,6 +310,7 @@
         }
         .tabs-md .tabbar {
             background: #488aff;
+            border-color: blue;
         }
 
         .line-break {

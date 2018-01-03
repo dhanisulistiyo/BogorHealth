@@ -21,4 +21,16 @@ export class LayananServiceProvider {
       let res = this.http.get(url).map(res=>res).map(res=>res);
       return res;
   }
+
+  getJadwal(id){
+    let url = this.conf.baseUrl+'api/JadwalLayanans/'+id;
+    let res = this.http.get(url).map(res=>res).map(res=>res);
+    return res;
+  }
+
+  getAntrian(nik, id){
+    let url = this.conf.baseUrl+'api/Antrians?nik='+nik+'&idlayanan='+id;
+    let res = this.http.get(url).map(res=>res).map(res=>res);
+    return res;
+  }
 }

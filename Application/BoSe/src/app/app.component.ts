@@ -1,9 +1,12 @@
+import { TabsHomePage } from './../pages/tabs-home/tabs-home';
 import { LoginPage } from './../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
+import { AntrianPage } from '../pages/antrian/antrian';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,16 +14,17 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = AntrianPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Home', component: TabsHomePage, icon:'ios-home-outline' },
+      { title: 'Log out', component: this.logout(), icon: 'ios-log-out-outline' }
     ];
 
   }
@@ -37,6 +41,11 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    this.menu.close();
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+    return LoginPage;
   }
 }

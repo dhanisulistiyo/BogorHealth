@@ -24,9 +24,9 @@ namespace UploadExcelBogorSehat.Models
         public string IdRS { get; set; }
         public string IdLayananRS { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
         public virtual JenisLayanan JenisLayanan { get; set; }
         public virtual RumahSakit RumahSakit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
     }
 }

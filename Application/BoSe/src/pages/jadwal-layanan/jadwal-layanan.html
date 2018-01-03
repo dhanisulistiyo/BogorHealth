@@ -1,0 +1,34 @@
+<!--
+  Generated template for the JadwalLayananPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Jadwal Layanan</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let item of Jadwal" >
+    <ion-card-header style="text-align:center;">
+      {{item.Hari}}
+    </ion-card-header>
+    <ion-list *ngFor="let jd of item.JadwalLayanan" >
+      <ion-row align-items-center>
+        <ion-col style="text-align:center;"><h3>Dr. {{jd.Dokter.Nama}} {{jd.Dokter.Spesiali.Gelar}}</h3></ion-col>
+         
+      </ion-row>
+      <ion-row>
+          <ion-col style="text-align:center;">Waktu Kerja</ion-col>
+          <ion-col style="text-align:center;">{{jd.JamMulai}}</ion-col>
+          <ion-col col-1  style="text-align:center;">  - </ion-col>
+          <ion-col style="text-align:center;">{{jd.JamSelesai}}</ion-col>
+      </ion-row>  
+    </ion-list>
+  </ion-card>
+</ion-content>

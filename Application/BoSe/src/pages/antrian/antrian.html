@@ -1,0 +1,42 @@
+<ion-header no-border [class.opaque]="!showToolbar">
+    <ion-navbar color="primary">
+      <ion-title [hidden]="!showToolbar">
+        No Antrian
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <div class="scroll-content" style="padding-top:0px">
+    <ion-content fullscreen="true" style="padding-top: 0px;" (ionScroll)="onScroll($event)">
+      <div class="slide-pager" style="margin-left: -18px; width:110%; overflow: visible; margin-top: -10px;">
+        <ion-slides pager="false" loop="true" speed="2000">
+          <ion-slide>
+            <ion-card>
+              <img src="http://kotabogor.go.id/uploads/post/rsud213.jpg" style="height:250px; width:100%;" />
+              <ion-card-content>
+                <h2>RS Umum PMI Bogor</h2>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <div class="honeymoon">
+        <h1 style="text-align: center;">Detail Antrian</h1>
+        <h3> <ion-icon ios="ios-pin" md="ios-pin-outline" class="custom-pin"></ion-icon> Dhani</h3>
+        <p class="p-custom">
+            <ion-icon ios="ios-pin" md="ios-pin-outline" class="custom-pin"></ion-icon>
+            Alamat : Tambun
+        </p>
+  
+        <p class="p-custom">
+          <ion-icon ios="ios-calendar" md="md-calendar" class="custom-pin"></ion-icon>
+            Tanggal Daftar Antrian : 
+        </p>
+
+        
+        <div class="no-urut">1</div>
+
+      </div>
+    </ion-content>
+  </div>

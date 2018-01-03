@@ -57,7 +57,7 @@ warning 6002: The table/view 'BogorHealth.dbo.Antrian' does not have a primary k
           <Key>
             <PropertyRef Name="IdJadwal" />
           </Key>
-          <Property Name="IdJadwal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdJadwal" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IdLayananRS" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="IdDokter" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Hari" Type="varchar" MaxLength="10" Nullable="false" />
@@ -203,7 +203,7 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_JadwalLayanan_LayananRS1">
+        <Association Name="FK_JadwalLayanan_LayananRS">
           <End Role="LayananRS" Type="Self.LayananRS" Multiplicity="1" />
           <End Role="JadwalLayanan" Type="Self.JadwalLayanan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -333,7 +333,7 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
             <End Role="Dokter" EntitySet="Dokter" />
             <End Role="JadwalLayanan" EntitySet="JadwalLayanan" />
           </AssociationSet>
-          <AssociationSet Name="FK_JadwalLayanan_LayananRS1" Association="Self.FK_JadwalLayanan_LayananRS1">
+          <AssociationSet Name="FK_JadwalLayanan_LayananRS" Association="Self.FK_JadwalLayanan_LayananRS">
             <End Role="LayananRS" EntitySet="LayananRS" />
             <End Role="JadwalLayanan" EntitySet="JadwalLayanan" />
           </AssociationSet>
@@ -404,21 +404,8 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Agama1" Relationship="Self.FK_Dokter_Agama" FromRole="Dokter" ToRole="Agama" />
           <NavigationProperty Name="Spesiali" Relationship="Self.FK_Dokter_Spesialis" FromRole="Dokter" ToRole="Spesialis" />
-          <NavigationProperty Name="JadwalLayanans" Relationship="Self.FK_JadwalLayanan_Dokter" FromRole="Dokter" ToRole="JadwalLayanan" />
           <NavigationProperty Name="Konsultasis" Relationship="Self.FK_Konsultasi_Dokter" FromRole="Dokter" ToRole="Konsultasi" />
-        </EntityType>
-        <EntityType Name="JadwalLayanan">
-          <Key>
-            <PropertyRef Name="IdJadwal" />
-          </Key>
-          <Property Name="IdJadwal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdLayananRS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdDokter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Hari" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JamMulai" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="JamSelesai" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Dokter" Relationship="Self.FK_JadwalLayanan_Dokter" FromRole="JadwalLayanan" ToRole="Dokter" />
-          <NavigationProperty Name="LayananR" Relationship="Self.FK_JadwalLayanan_LayananRS1" FromRole="JadwalLayanan" ToRole="LayananRS" />
+          <NavigationProperty Name="JadwalLayanans" Relationship="BogorHealthModel.FK_JadwalLayanan_Dokter" FromRole="Dokter" ToRole="JadwalLayanan" />
         </EntityType>
         <EntityType Name="JenisLayanan">
           <Key>
@@ -438,9 +425,9 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
           <Property Name="IdLayanan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdRS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdLayananRS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="JadwalLayanans" Relationship="Self.FK_JadwalLayanan_LayananRS1" FromRole="LayananRS" ToRole="JadwalLayanan" />
           <NavigationProperty Name="JenisLayanan" Relationship="Self.FK_LayananRS_JenisLayanan" FromRole="LayananRS" ToRole="JenisLayanan" />
           <NavigationProperty Name="RumahSakit" Relationship="Self.FK_LayananRS_RumahSakit" FromRole="LayananRS" ToRole="RumahSakit" />
+          <NavigationProperty Name="JadwalLayanans" Relationship="BogorHealthModel.FK_JadwalLayanan_LayananRS" FromRole="LayananR" ToRole="JadwalLayanan" />
         </EntityType>
         <EntityType Name="Pasien">
           <Key>
@@ -572,18 +559,6 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_JadwalLayanan_Dokter">
-          <End Role="Dokter" Type="Self.Dokter" Multiplicity="1" />
-          <End Role="JadwalLayanan" Type="Self.JadwalLayanan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dokter">
-              <PropertyRef Name="NPA" />
-            </Principal>
-            <Dependent Role="JadwalLayanan">
-              <PropertyRef Name="IdDokter" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Konsultasi_Dokter">
           <End Role="Dokter" Type="Self.Dokter" Multiplicity="1" />
           <End Role="Konsultasi" Type="Self.Konsultasi" Multiplicity="*" />
@@ -593,18 +568,6 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
             </Principal>
             <Dependent Role="Konsultasi">
               <PropertyRef Name="NPA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JadwalLayanan_LayananRS1">
-          <End Role="LayananRS" Type="Self.LayananR" Multiplicity="1" />
-          <End Role="JadwalLayanan" Type="Self.JadwalLayanan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LayananRS">
-              <PropertyRef Name="IdLayananRS" />
-            </Principal>
-            <Dependent Role="JadwalLayanan">
-              <PropertyRef Name="IdLayananRS" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -672,7 +635,6 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Agamas" EntityType="Self.Agama" />
           <EntitySet Name="Dokters" EntityType="Self.Dokter" />
-          <EntitySet Name="JadwalLayanans" EntityType="Self.JadwalLayanan" />
           <EntitySet Name="JenisLayanans" EntityType="Self.JenisLayanan" />
           <EntitySet Name="LayananRS" EntityType="Self.LayananR" />
           <EntitySet Name="Pasiens" EntityType="Self.Pasien" />
@@ -696,17 +658,9 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
             <End Role="Spesialis" EntitySet="Spesialis" />
             <End Role="Dokter" EntitySet="Dokters" />
           </AssociationSet>
-          <AssociationSet Name="FK_JadwalLayanan_Dokter" Association="Self.FK_JadwalLayanan_Dokter">
-            <End Role="Dokter" EntitySet="Dokters" />
-            <End Role="JadwalLayanan" EntitySet="JadwalLayanans" />
-          </AssociationSet>
           <AssociationSet Name="FK_Konsultasi_Dokter" Association="Self.FK_Konsultasi_Dokter">
             <End Role="Dokter" EntitySet="Dokters" />
             <End Role="Konsultasi" EntitySet="Konsultasis" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JadwalLayanan_LayananRS1" Association="Self.FK_JadwalLayanan_LayananRS1">
-            <End Role="LayananRS" EntitySet="LayananRS" />
-            <End Role="JadwalLayanan" EntitySet="JadwalLayanans" />
           </AssociationSet>
           <AssociationSet Name="FK_Antrian_JenisLayanan" Association="Self.FK_Antrian_JenisLayanan">
             <End Role="JenisLayanan" EntitySet="JenisLayanans" />
@@ -728,8 +682,54 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
             <End Role="Pasien" EntitySet="Pasiens" />
             <End Role="Konsultasi" EntitySet="Konsultasis" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          <EntitySet Name="JadwalLayanans" EntityType="BogorHealthModel.JadwalLayanan" />
+          <AssociationSet Name="FK_JadwalLayanan_Dokter" Association="BogorHealthModel.FK_JadwalLayanan_Dokter">
+            <End Role="Dokter" EntitySet="Dokters" />
+            <End Role="JadwalLayanan" EntitySet="JadwalLayanans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JadwalLayanan_LayananRS" Association="BogorHealthModel.FK_JadwalLayanan_LayananRS">
+            <End Role="LayananR" EntitySet="LayananRS" />
+            <End Role="JadwalLayanan" EntitySet="JadwalLayanans" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="JadwalLayanan">
+          <Key>
+            <PropertyRef Name="IdJadwal" />
+          </Key>
+          <Property Name="IdJadwal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdLayananRS" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdDokter" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hari" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JamMulai" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="JamSelesai" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Dokter" Relationship="BogorHealthModel.FK_JadwalLayanan_Dokter" FromRole="JadwalLayanan" ToRole="Dokter" />
+          <NavigationProperty Name="LayananR" Relationship="BogorHealthModel.FK_JadwalLayanan_LayananRS" FromRole="JadwalLayanan" ToRole="LayananR" />
+        </EntityType>
+        <Association Name="FK_JadwalLayanan_Dokter">
+          <End Type="BogorHealthModel.Dokter" Role="Dokter" Multiplicity="1" />
+          <End Type="BogorHealthModel.JadwalLayanan" Role="JadwalLayanan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dokter">
+              <PropertyRef Name="NPA" />
+            </Principal>
+            <Dependent Role="JadwalLayanan">
+              <PropertyRef Name="IdDokter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JadwalLayanan_LayananRS">
+          <End Type="BogorHealthModel.LayananR" Role="LayananR" Multiplicity="1" />
+          <End Type="BogorHealthModel.JadwalLayanan" Role="JadwalLayanan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LayananR">
+              <PropertyRef Name="IdLayananRS" />
+            </Principal>
+            <Dependent Role="JadwalLayanan">
+              <PropertyRef Name="IdLayananRS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -769,18 +769,6 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
                 <ScalarProperty Name="IdSpesialis" ColumnName="IdSpesialis" />
                 <ScalarProperty Name="Agama" ColumnName="Agama" />
                 <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="JadwalLayanans">
-            <EntityTypeMapping TypeName="BogorHealthModel.JadwalLayanan">
-              <MappingFragment StoreEntitySet="JadwalLayanan">
-                <ScalarProperty Name="IdJadwal" ColumnName="IdJadwal" />
-                <ScalarProperty Name="IdLayananRS" ColumnName="IdLayananRS" />
-                <ScalarProperty Name="IdDokter" ColumnName="IdDokter" />
-                <ScalarProperty Name="Hari" ColumnName="Hari" />
-                <ScalarProperty Name="JamMulai" ColumnName="JamMulai" />
-                <ScalarProperty Name="JamSelesai" ColumnName="JamSelesai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -871,6 +859,18 @@ warning 6002: The table/view 'BogorHealth.dbo.Konsultasi' does not have a primar
                 <ScalarProperty Name="NPA" ColumnName="NPA" />
                 <ScalarProperty Name="Chat" ColumnName="Chat" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JadwalLayanans">
+            <EntityTypeMapping TypeName="BogorHealthModel.JadwalLayanan">
+              <MappingFragment StoreEntitySet="JadwalLayanan">
+                <ScalarProperty Name="JamSelesai" ColumnName="JamSelesai" />
+                <ScalarProperty Name="JamMulai" ColumnName="JamMulai" />
+                <ScalarProperty Name="Hari" ColumnName="Hari" />
+                <ScalarProperty Name="IdDokter" ColumnName="IdDokter" />
+                <ScalarProperty Name="IdLayananRS" ColumnName="IdLayananRS" />
+                <ScalarProperty Name="IdJadwal" ColumnName="IdJadwal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

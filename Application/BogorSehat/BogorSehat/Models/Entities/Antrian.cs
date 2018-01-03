@@ -14,12 +14,13 @@ namespace BogorSehat.Models.Entities
     
     public partial class Antrian
     {
+        public int id { get; set; }
         public string NIK { get; set; }
         public int NoAntrian { get; set; }
         public System.DateTime TanggalDaftar { get; set; }
-        public string IdLayanan { get; set; }
+        public string IdLayananRS { get; set; }
     
-        public virtual JenisLayanan JenisLayanan { get; set; }
+        public virtual LayananR LayananR { get; set; }
         public virtual Pasien Pasien { get; set; }
     }
 }

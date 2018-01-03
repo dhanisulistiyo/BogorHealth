@@ -120,6 +120,7 @@
     <Compile Include="Models\Dokter.cs">
       <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Jadwal.cs" />
     <Compile Include="Models\JadwalLayanan.cs">
       <DependentUpon>BogorHealthEntities.tt</DependentUpon>
     </Compile>

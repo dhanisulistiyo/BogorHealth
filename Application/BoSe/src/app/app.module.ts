@@ -1,3 +1,6 @@
+import { RegisterPage } from './../pages/register/register';
+import { AntrianPage } from './../pages/antrian/antrian';
+import { JadwalLayananPage } from './../pages/jadwal-layanan/jadwal-layanan';
 import { DetailChatPage } from './../pages/detail-chat/detail-chat';
 import { UserProfilPage } from './../pages/user-profil/user-profil';
 import { DetailHospitalPage } from './../pages/detail-hospital/detail-hospital';
@@ -37,7 +40,10 @@ import { DokterServiceProvider } from '../providers/dokter-service';
     DetailDokterPage,
     DetailHospitalPage,
     UserProfilPage,
-    DetailChatPage
+    DetailChatPage,
+    JadwalLayananPage,
+    AntrianPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -73,7 +79,10 @@ import { DokterServiceProvider } from '../providers/dokter-service';
     DetailDokterPage,
     DetailHospitalPage,
     UserProfilPage,
-    DetailChatPage
+    DetailChatPage,
+    JadwalLayananPage,
+    AntrianPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

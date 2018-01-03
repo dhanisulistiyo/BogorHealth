@@ -19,7 +19,8 @@ namespace UploadExcelBogorSehat
             //uploadLayanan();
             //uploadAdmin();
             //uploadRS();
-            uploadLayananRS();
+            //uploadLayananRS();
+            uploadJadwal();
         }
 
 
@@ -122,7 +123,7 @@ namespace UploadExcelBogorSehat
         {
             BogorHealthEntities db = new BogorHealthEntities();
             string pathToExcelFile = "" + @"D:\rsud.xlsx";
-            string sheetName = "Layanan RS";
+            string sheetName = "rrLayanan RS";
 
 
             var excelFile = new ExcelQueryFactory(pathToExcelFile);
@@ -146,22 +147,37 @@ namespace UploadExcelBogorSehat
         {
             BogorHealthEntities db = new BogorHealthEntities();
             string pathToExcelFile = "" + @"D:\rsud.xlsx";
-            string sheetName = "Jadwal Layanan";
+            string sheetName = "JadwalLayanan";
 
 
             var excelFile = new ExcelQueryFactory(pathToExcelFile);
-            var artistAlbums = from a in excelFile.Worksheet(sheetName) select a;
-            IQueryable<JadwalLayanan> sp = (from a in excelFile.Worksheet<JadwalLayanan>(sheetName) select a);
-
-            foreach (JadwalLayanan dok in sp)
+            IQueryable<Jadwal> artistAlbums = (from a in excelFile.Worksheet<Jadwal>(sheetName) select a);
+            IQueryable<JadwalLayanan> sp = artistAlbums.Select(dok => new JadwalLayanan
             {
-                    db.JadwalLayanans.Add(dok);
+                IdJadwal= dok.IdLayananRS + dok.IdDokter + dok.JamMulai.TimeOfDay.TotalHours +dok.Hari,
+                IdLayananRS = dok.IdLayananRS,
+                IdDokter = dok.IdDokter,
+                Hari = dok.Hari,
+                JamMulai = (dok.JamMulai.TimeOfDay),
+                JamSelesai = dok.JamSelesai.TimeOfDay,
+            });
+
+            foreach (var k in sp)
+            {
+                var cek = db.JadwalLayanans.Find(k.IdJadwal);
+                if(cek == null)
+                {
+                    db.JadwalLayanans.Add(k);
                     db.SaveChanges();
-                    Console.WriteLine("Ok");
-                
+                }
+               
+
             }
+            
 
+            Console.Write(sp);
+
+           
         }
-
     }
 }

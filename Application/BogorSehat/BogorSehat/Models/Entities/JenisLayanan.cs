@@ -17,7 +17,6 @@ namespace BogorSehat.Models.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public JenisLayanan()
         {
-            this.Antrians = new HashSet<Antrian>();
             this.LayananRS = new HashSet<LayananR>();
         }
     
@@ -26,8 +25,6 @@ namespace BogorSehat.Models.Entities
         public string Deskripsi { get; set; }
         public string ImageUrl { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Antrian> Antrians { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LayananR> LayananRS { get; set; }
     }

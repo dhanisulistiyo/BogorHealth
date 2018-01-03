@@ -23,6 +23,7 @@ namespace BogorSehat.Models.Entities
     
         public string NPA { get; set; }
         public string Nama { get; set; }
+        public string JenisKelamin { get; set; }
         public Nullable<System.DateTime> TanggalLahir { get; set; }
         public string KotaLahir { get; set; }
         public string Email { get; set; }
@@ -31,7 +32,6 @@ namespace BogorSehat.Models.Entities
         public string IdSpesialis { get; set; }
         public Nullable<int> Agama { get; set; }
         public string ImageUrl { get; set; }
-        public string JenisKelamin { get; set; }
     
         public virtual Agama Agama1 { get; set; }
         public virtual Spesiali Spesiali { get; set; }

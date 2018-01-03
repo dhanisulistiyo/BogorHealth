@@ -18,6 +18,7 @@ namespace BogorSehat.Models.Entities
         public LayananR()
         {
             this.JadwalLayanans = new HashSet<JadwalLayanan>();
+            this.Antrians = new HashSet<Antrian>();
         }
     
         public string IdLayanan { get; set; }
@@ -28,5 +29,7 @@ namespace BogorSehat.Models.Entities
         public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
         public virtual JenisLayanan JenisLayanan { get; set; }
         public virtual RumahSakit RumahSakit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Antrian> Antrians { get; set; }
     }
 }

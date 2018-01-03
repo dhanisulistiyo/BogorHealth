@@ -3,6 +3,7 @@ import { TabsHomePage } from './../tabs-home/tabs-home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { RegisterPage } from '../register/register';
 
 /**
  * Generated class for the LoginPage page.
@@ -28,7 +29,7 @@ export class LoginPage {
 
 
   public createAccount() {
-
+    this.nav.push(RegisterPage);
   }
 
   public login() {

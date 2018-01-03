@@ -14,7 +14,7 @@ namespace BogorSehat.Models.Entities
     
     public partial class JadwalLayanan
     {
-        public int IdJadwal { get; set; }
+        public string IdJadwal { get; set; }
         public string IdLayananRS { get; set; }
         public string IdDokter { get; set; }
         public string Hari { get; set; }

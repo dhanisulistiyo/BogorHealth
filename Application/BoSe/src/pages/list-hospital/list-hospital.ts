@@ -26,7 +26,6 @@ export class ListHospitalPage {
       console.log(data)
       this.Hospital = data.json();
     })
-    
   }
   gotoService(id){
     this.navCtrl.push(ListServicesPage, {id})

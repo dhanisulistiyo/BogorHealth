@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="BogorHealthModel.Admin" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BogorHealthModel.Agama" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BogorHealthModel.Dokter" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BogorHealthModel.JadwalLayanan" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BogorHealthModel.JenisLayanan" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BogorHealthModel.LayananR" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BogorHealthModel.Pasien" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
@@ -20,15 +19,16 @@
         <AssociationConnector Association="BogorHealthModel.FK_Dokter_Agama" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Pasien_Agama" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Dokter_Spesialis" ManuallyRouted="false" />
-        <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_Dokter" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Dokter" ManuallyRouted="false" />
-        <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_LayananRS1" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Antrian_JenisLayanan" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_LayananRS_JenisLayanan" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_LayananRS_RumahSakit" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Antrian_Pasien" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Pasien" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="BogorHealthModel.JadwalLayanan" Width="1.5" PointX="6.875" PointY="14.75" />
+        <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_Dokter" />
+        <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_LayananRS" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

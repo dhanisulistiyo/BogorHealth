@@ -13,7 +13,7 @@ export class AuthServiceProvider {
   Authenthication
   constructor(public http: Http, private conf: ConfigProvider) {
     console.log('Hello AuthServiceProvider Provider');
-    this.Authenthication = null
+    this.Authenthication = {UserName: "3216060810930019", Nama: "Dhani", Email: "dhani@gmail.com"}
   }
 
   public storeUserCredentials(token) {

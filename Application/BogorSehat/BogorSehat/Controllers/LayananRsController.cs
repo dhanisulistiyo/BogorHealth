@@ -30,9 +30,9 @@ namespace BogorSehat.Controllers
             string baseUrl = Url.Request.RequestUri.GetComponents(UriComponents.SchemeAndServer, UriFormat.Unescaped);
 
             List<LayananRS> rs = null;
-            rs = db.LayananRS.Where(b => b.IdRS == id).Select(m => new LayananRS{
+            rs = db.LayananRS.Where(b => b.IdRS == id).Select(m => new LayananRS {
                 IdLayanan = m.IdLayanan,
-                IdRS= m.IdRS,
+                IdRS = m.IdRS,
                 IdLayananRS = m.IdLayananRS,
                 Layanan = db.JenisLayanans.Where(st => st.IdLayanan == m.IdLayanan).Select(st => new Layanans
                 {

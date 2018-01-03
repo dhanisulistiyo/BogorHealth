@@ -17,8 +17,8 @@ namespace UploadExcelBogorSehat.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Dokter()
         {
-            this.JadwalLayanans = new HashSet<JadwalLayanan>();
             this.Konsultasis = new HashSet<Konsultasi>();
+            this.JadwalLayanans = new HashSet<JadwalLayanan>();
         }
     
         public string NPA { get; set; }
@@ -36,8 +36,8 @@ namespace UploadExcelBogorSehat.Models
         public virtual Agama Agama1 { get; set; }
         public virtual Spesiali Spesiali { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Konsultasi> Konsultasis { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JadwalLayanan> JadwalLayanans { get; set; }
     }
 }
