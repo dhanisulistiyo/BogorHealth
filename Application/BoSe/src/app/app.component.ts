@@ -14,7 +14,7 @@ import { AntrianPage } from '../pages/antrian/antrian';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AntrianPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any, icon: any}>;
 
