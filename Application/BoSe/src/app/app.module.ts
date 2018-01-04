@@ -25,6 +25,7 @@ import { HttpModule } from '@angular/http';
 import { HospitalServiceProvider } from '../providers/hospital-service';
 import { LayananServiceProvider } from '../providers/layanan-service';
 import { DokterServiceProvider } from '../providers/dokter-service';
+import { HistoryAntrianPage } from '../pages/history-antrian/history-antrian';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DokterServiceProvider } from '../providers/dokter-service';
     DetailChatPage,
     JadwalLayananPage,
     AntrianPage,
-    RegisterPage
+    RegisterPage,
+    HistoryAntrianPage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ import { DokterServiceProvider } from '../providers/dokter-service';
     DetailChatPage,
     JadwalLayananPage,
     AntrianPage,
-    RegisterPage
+    RegisterPage,
+    HistoryAntrianPage
   ],
   providers: [
     StatusBar,

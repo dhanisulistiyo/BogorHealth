@@ -7,17 +7,125 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
-
+  <ion-toolbar>
+    <!-- <ion-segment [(ngModel)]="relationship" color="primary" (ionChange)="segmentChanged($event)"> -->
+    <ion-segment color="light">
+      <ion-segment-button value="pasien">
+        <h4>Pasien</h4>
+      </ion-segment-button>
+      <ion-segment-button value="dokter">
+        <h4>Dokter</h4>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content class="scroll-content">
+  <h4>Register Pasien</h4>
   <ion-item>
-    <ion-label color="primary" floating>Company Name
+    <ion-label color="primary" floating>NIK
       <span style="color: red;">*</span>
     </ion-label>
-    <ion-input></ion-input>
+    <ion-input type="text" [(ngModel)]="Pasien.NIK"></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Nama
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="Pasien.Nama"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Alamat
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="Pasien.Alamat"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Tanggal Lahir
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-datetime displayFormat="DD MMMM YYYY" [(ngModel)]="Pasien.TanggalLahir"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Kota Lahir
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="Pasien.KotaLahir"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Jenis Kelamin
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-select [(ngModel)]="Pasien.JenisKelamin">
+      <ion-option value="Laki-laki">Laki-laki</ion-option>
+      <ion-option value="Perempuan">Perempuan</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Agama
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-select [(ngModel)]="Pasien.Agama">
+      <ion-option value="1">Islam</ion-option>
+      <ion-option value="2">Protestan</ion-option>
+      <ion-option value="3">Katolik</ion-option>
+      <ion-option value="4">Hindu</ion-option>
+      <ion-option value="5">Buddha</ion-option>
+      <ion-option value="6">Kong Hu Cu</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Pekerjaan
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="Pasien.Pekerjaan"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Status Pernikahan
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-select  [(ngModel)]="Pasien.StatusPernikahan">
+        <ion-option value="Belum Menikah">Belum Menikah</ion-option>
+        <ion-option value="Menikah">Menikah</ion-option>
+      </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Password
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-input type="password" [(ngModel)]="Pasien.Password"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label color="primary" floating>Email
+        <span style="color: red;">*</span>
+      </ion-label>
+      <ion-input type="email" [(ngModel)]="Pasien.Email"></ion-input>
+    </ion-item>
+
+  <!-- <ion-item>
+    <ion-label color="primary" floating>Confirm Password
+      <span style="color: red;">*</span>
+    </ion-label>
+    <ion-input type="password" [(ngModel)]="Pasien.ConPassword"></ion-input>
+  </ion-item> -->
+
+  <button ion-button style="margin-top: 5px;margin-bottom: 0px;" (click)="register()">Register</button>
+  <p class="p-center" style="margin-top: 10px;margin-bottom: 10px;">
+    Register an account, you accept our
+    <b>
+      <a class="p-center" href="">User Agreement</a>
+    </b>.
+  </p>
 </ion-content>

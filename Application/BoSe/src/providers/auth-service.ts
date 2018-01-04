@@ -13,7 +13,7 @@ export class AuthServiceProvider {
   Authenthication
   constructor(public http: Http, private conf: ConfigProvider) {
     console.log('Hello AuthServiceProvider Provider');
-    this.Authenthication = {UserName: "3216060810930019", Nama: "Dhani", Email: "dhani@gmail.com"}
+    this.Authenthication = null;
   }
 
   public storeUserCredentials(token) {
@@ -32,13 +32,11 @@ export class AuthServiceProvider {
     return response
   }
 
-
-  test() {
- 
-    let url = this.conf.baseUrl+'api/Pasiens/'
-    this.http.get(url).map(res=>res).map(res=>res).subscribe(res=>{
-      console.log(res.json())
-    })
+  register(pasien) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let response = this.http.post(this.conf.baseUrl+'api/RegisterPasien', pasien, { headers: headers }).map(res =>res.json()) 
+    return response
   }
 
 
