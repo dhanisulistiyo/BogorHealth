@@ -181,8 +181,13 @@
     <Compile Include="Controllers\AntriansController.cs" />
     <Compile Include="Controllers\DoktersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JadwalLayananRsController.cs" />
     <Compile Include="Controllers\JadwalLayanansController.cs" />
     <Compile Include="Controllers\LayananRsController.cs" />
+    <Compile Include="Controllers\ListAntriansController.cs" />
+    <Compile Include="Controllers\ListDoktersController.cs" />
+    <Compile Include="Controllers\ListPasiensController.cs" />
+    <Compile Include="Controllers\ListRSController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PasiensController.cs" />
     <Compile Include="Controllers\RumahSakitsController.cs" />
@@ -316,6 +321,31 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\ListAntrians\Create.cshtml" />
+    <Content Include="Views\ListAntrians\Delete.cshtml" />
+    <Content Include="Views\ListAntrians\Details.cshtml" />
+    <Content Include="Views\ListAntrians\Edit.cshtml" />
+    <Content Include="Views\ListAntrians\Index.cshtml" />
+    <Content Include="Views\ListRS\Create.cshtml" />
+    <Content Include="Views\ListRS\Delete.cshtml" />
+    <Content Include="Views\ListRS\Details.cshtml" />
+    <Content Include="Views\ListRS\Edit.cshtml" />
+    <Content Include="Views\ListRS\Index.cshtml" />
+    <Content Include="Views\ListDokters\Create.cshtml" />
+    <Content Include="Views\ListDokters\Delete.cshtml" />
+    <Content Include="Views\ListDokters\Details.cshtml" />
+    <Content Include="Views\ListDokters\Edit.cshtml" />
+    <Content Include="Views\ListDokters\Index.cshtml" />
+    <Content Include="Views\ListPasiens\Create.cshtml" />
+    <Content Include="Views\ListPasiens\Delete.cshtml" />
+    <Content Include="Views\ListPasiens\Details.cshtml" />
+    <Content Include="Views\ListPasiens\Edit.cshtml" />
+    <Content Include="Views\ListPasiens\Index.cshtml" />
+    <Content Include="Views\JadwalLayananRs\Create.cshtml" />
+    <Content Include="Views\JadwalLayananRs\Delete.cshtml" />
+    <Content Include="Views\JadwalLayananRs\Details.cshtml" />
+    <Content Include="Views\JadwalLayananRs\Edit.cshtml" />
+    <Content Include="Views\JadwalLayananRs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
