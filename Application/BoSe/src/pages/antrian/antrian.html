@@ -7,7 +7,7 @@
   </ion-header>
   
   
-  <div class="scroll-content" style="padding-top:0px">
+  <div class="scroll-content" style="padding-top:0px" *ngIf="ErrorMessage != null" >
     <ion-content fullscreen="true" style="padding-top: 0px;" (ionScroll)="onScroll($event)">
       <div class="slide-pager" style="margin-left: -18px; width:110%; overflow: visible; margin-top: -10px;">
         <ion-slides pager="false" loop="true" speed="2000">
@@ -15,7 +15,7 @@
             <ion-card>
               <img src="http://kotabogor.go.id/uploads/post/rsud213.jpg" style="height:250px; width:100%;" />
               <ion-card-content>
-                <h2>RS Umum PMI Bogor</h2>
+                <h2>{{Antrian?.RumahSakit.NamaRS}}</h2>
               </ion-card-content>
             </ion-card>
           </ion-slide>
@@ -23,20 +23,30 @@
       </div>
       <div class="honeymoon">
         <h1 style="text-align: center;">Detail Antrian</h1>
-        <h3> <ion-icon ios="ios-pin" md="ios-pin-outline" class="custom-pin"></ion-icon> Dhani</h3>
+        <h3> <ion-icon ios="ios-person" md="md-person" class="custom-pin-nama"></ion-icon> {{Antrian?.Pasien.Nama}}</h3>
         <p class="p-custom">
             <ion-icon ios="ios-pin" md="ios-pin-outline" class="custom-pin"></ion-icon>
-            Alamat : Tambun
+            Alamat : {{Antrian?.Pasien.Alamat}}
         </p>
   
         <p class="p-custom">
           <ion-icon ios="ios-calendar" md="md-calendar" class="custom-pin"></ion-icon>
-            Tanggal Daftar Antrian : 
+            Tanggal Daftar Antrian : {{Antrian?.TanggalDaftar | date}}
         </p>
 
-        
-        <div class="no-urut">1</div>
-
+        <h3 style="text-align: center;">No. Urut</h3>
+        <div class="no-urut">{{Antrian?.NoAntrian}}</div>
+        <div>
+          <ion-row><p>Note: </p></ion-row>
+          <ion-list>
+            <ion-item text-wrap>1. Rumah Sakit Buka Pukul Jam 08.00.</ion-item>
+            <ion-item text-wrap>2. Estimasi waktu periksa pasien 15 menit.</ion-item>
+            <ion-item text-wrap>3. Datang 30 menit sebelum waktu pemeriksaan.</ion-item>
+          </ion-list>
+         
+        </div>
       </div>
+      <ion-row><ion-col style="text-align: center"><button ion-button color="secondary" (click)="gotoHome()">Go To Home</button></ion-col></ion-row>
+      
     </ion-content>
   </div>

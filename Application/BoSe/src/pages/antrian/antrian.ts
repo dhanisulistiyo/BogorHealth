@@ -37,7 +37,7 @@ export class AntrianPage {
     this.ref.detectChanges();
   }
 
-  test(){
+  ionViewWillEnter(){
     console.log('ionViewDidLoad AntrianPage');
     let loader = this.load.create({
       content: 'Please wait...'
@@ -47,6 +47,7 @@ export class AntrianPage {
     this.ser.getAntrian( this.Nik, this.id).subscribe(data=>{
       this.Antrian = data.json();
       console.log(data.json())
+      this.ErrorMessage = 1;
       loader.dismiss();
     }, err=>{
       console.log(err);
@@ -73,4 +74,7 @@ export class AntrianPage {
     alert.present();
   }
 
+  gotoHome(){
+    this.navCtrl.popToRoot();
+  }
 }
