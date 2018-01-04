@@ -1,0 +1,147 @@
+﻿@model BogorSehat.Models.Entities.RumahSakit
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RumahSakit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NamaRS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamaRS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JenisRS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JenisRS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KelasRS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KelasRS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deskripsi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deskripsi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Visi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Misi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Misi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direktur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direktur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alamat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Penyelenggara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Penyelenggara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Website)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Website)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KodePos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KodePos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telephone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telephone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.Nama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdRS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

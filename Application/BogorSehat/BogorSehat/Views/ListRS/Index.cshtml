@@ -1,0 +1,124 @@
+﻿@model IEnumerable<BogorSehat.Models.Entities.RumahSakit>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NamaRS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JenisRS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KelasRS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deskripsi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Misi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direktur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Penyelenggara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KodePos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Admin.Nama)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamaRS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JenisRS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KelasRS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deskripsi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Misi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direktur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alamat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Penyelenggara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Website)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KodePos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin.Nama)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdRS }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdRS }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdRS })
+        </td>
+    </tr>
+}
+
+</table>
