@@ -1,0 +1,35 @@
+﻿@model BogorSehat.Models.Entities.LayananR
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LayananR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JenisLayanan.JenisLayanan1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JenisLayanan.JenisLayanan1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RumahSakit.NamaRS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RumahSakit.NamaRS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdLayananRS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
