@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BogorSehat.Models.Entities.Antrian>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NoAntrian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TanggalDaftar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LayananR.IdLayanan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pasien.Nama)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoAntrian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TanggalDaftar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LayananR.IdLayanan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pasien.Nama)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
