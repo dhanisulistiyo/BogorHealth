@@ -111,15 +111,62 @@ namespace BogorSehat.Controllers
             return Ok(res);
         }
 
-        // GET: api/Antrians/5
+        [Route("api/ListAntrian/")]
         [ResponseType(typeof(Antrian))]
-        public IHttpActionResult GetAntrian(string id)
+        public IHttpActionResult GetAntrian(string nik)
         {
-            Antrian antrian = db.Antrians.Find(id);
-            if (antrian == null)
+            var antrian = db.Antrians.Where(b => b.NIK == nik).OrderByDescending(x=>x.TanggalDaftar).Select(a => new Antrians
             {
-                return NotFound();
-            }
+                NIK = a.NIK,
+                NoAntrian = a.NoAntrian,
+                TanggalDaftar = a.TanggalDaftar,
+                Pasien = db.Pasiens.Where(d => d.NIK == nik).Select(b => new Pasiens
+                {
+                    NIK = b.NIK,
+                    Nama = b.Nama,
+                    TanggalLahir = b.TanggalLahir,
+                    Alamat = b.Alamat,
+                    KotaLahir = b.KotaLahir,
+                    Email = b.Email,
+                    JenisKelamin = b.JenisKelamin,
+                    Pekerjaan = b.Pekerjaan,
+                    StatusPernikahan = b.StatusPernikahan,
+                    ImageUrl = b.ImageUrl,
+                    Agama = b.Agama1.Nama
+                }).FirstOrDefault(),
+                Layanan = db.LayananRS.Where(bl => bl.IdLayananRS == a.IdLayananRS).Select(l => new LayananRS
+                {
+                    IdLayanan = l.IdLayanan,
+                    IdRS = l.IdRS,
+                    IdLayananRS = a.IdLayananRS,
+                    Layanan = db.JenisLayanans.Where(st => st.IdLayanan == l.IdLayanan).Select(st => new Layanans
+                    {
+                        IdLayanan = st.IdLayanan,
+                        ImageUrl = st.ImageUrl,
+                        JenisLayanan = st.JenisLayanan1,
+                        Deskripsi = st.Deskripsi
+                    }).FirstOrDefault(),
+                    RumahSakit = db.RumahSakits.Where(d => d.IdRS == l.IdRS).Select(b => new RumahSakits
+                    {
+                        IdRS = b.IdRS,
+                        Deskripsi = b.Deskripsi,
+                        Direktur = b.Direktur,
+                        Fax = b.Fax,
+                        Alamat = b.Alamat,
+                        JenisRS = b.JenisRS,
+                        KelasRS = b.KelasRS,
+                        ImageUrl = b.ImageUrl,
+                        KodePos = b.KodePos,
+                        Kota = b.Kota,
+                        Misi = b.Misi,
+                        NamaRS = b.NamaRS,
+                        Penyelenggara = b.Penyelenggara,
+                        Telephone = b.Telephone,
+                        Visi = b.Visi,
+                        Website = b.Website
+                    }).FirstOrDefault(),
+            }).FirstOrDefault()
+        }).ToList();
 
             return Ok(antrian);
         }

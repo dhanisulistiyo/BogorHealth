@@ -10,7 +10,7 @@ namespace BogorSehat.Models
         public string NIK { get; set; }
         public int NoAntrian { get; set; }
         public System.DateTime TanggalDaftar { get; set; }
-
+        public LayananRS Layanan { get; set; }
         public RumahSakits RumahSakit { get; set; }
         public Pasiens Pasien { get; set; }
     }

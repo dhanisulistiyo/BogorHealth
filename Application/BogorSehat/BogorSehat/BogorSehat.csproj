@@ -179,10 +179,12 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\AntriansController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\DoktersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JadwalLayananRsController.cs" />
     <Compile Include="Controllers\JadwalLayanansController.cs" />
+    <Compile Include="Controllers\KonsultasiController.cs" />
     <Compile Include="Controllers\LayananRsController.cs" />
     <Compile Include="Controllers\ListAntriansController.cs" />
     <Compile Include="Controllers\ListDoktersController.cs" />
@@ -196,6 +198,7 @@
     </Compile>
     <Compile Include="Models\Admins.cs" />
     <Compile Include="Models\Antrian.cs" />
+    <Compile Include="Models\Chats.cs" />
     <Compile Include="Models\Dokters.cs" />
     <Compile Include="Models\Entities\Admin.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -346,6 +349,11 @@
     <Content Include="Views\JadwalLayananRs\Details.cshtml" />
     <Content Include="Views\JadwalLayananRs\Edit.cshtml" />
     <Content Include="Views\JadwalLayananRs\Index.cshtml" />
+    <Content Include="Views\Konsultasi\Create.cshtml" />
+    <Content Include="Views\Konsultasi\Delete.cshtml" />
+    <Content Include="Views\Konsultasi\Details.cshtml" />
+    <Content Include="Views\Konsultasi\Edit.cshtml" />
+    <Content Include="Views\Konsultasi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
