@@ -1,0 +1,35 @@
+﻿@model BogorSehat.Models.Entities.Konsultasi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Konsultasi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dokter.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dokter.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pasien.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pasien.Nama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

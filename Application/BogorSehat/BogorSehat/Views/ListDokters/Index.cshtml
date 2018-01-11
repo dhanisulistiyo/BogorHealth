@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>List Dokter</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -29,12 +29,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Alamat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Agama1.Nama)
@@ -64,12 +58,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Alamat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Agama1.Nama)
