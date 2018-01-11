@@ -1,5 +1,8 @@
+import { DetailAntrianPage } from './../detail-antrian/detail-antrian';
+import { AuthServiceProvider } from './../../providers/auth-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { LayananServiceProvider } from '../../providers/layanan-service';
 
 /**
  * Generated class for the HistoryAntrianPage page.
@@ -12,12 +15,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'history-antrian.html',
 })
 export class HistoryAntrianPage {
+  ListAntrian
+  Nik
+  constructor(public navCtrl: NavController, public navParams: NavParams, public auth: AuthServiceProvider, public load:LoadingController,
+  public ser: LayananServiceProvider
+  ) {
+    this.Nik= this.auth.Authenthication.UserName;
+    this.ListAntrian = []
+  }
+  
+  ionViewWillEnter(){
+    console.log('ionViewDidLoad AntrianPage');
+    let loader = this.load.create({
+      content: 'Please wait...'
+    });
+    loader.present();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.ser.getListAntrian( this.Nik).subscribe(data=>{
+      this.ListAntrian = data.json();
+      console.log(data.json())
+      loader.dismiss();
+    }, err=>{
+      console.log(err);
+      console.log(err.json());
+      loader.dismiss();
+    })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryAntrianPage');
+  gotoDetails(antri){
+    this.navCtrl.push(DetailAntrianPage, {antri})
   }
+ 
+
+
 
 }
