@@ -14,20 +14,20 @@
         <EntityTypeShape EntityType="BogorHealthModel.Pasien" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BogorHealthModel.RumahSakit" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BogorHealthModel.Spesiali" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BogorHealthModel.Konsultasi" Width="1.5" PointX="10.5" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="BogorHealthModel.FK_RumahSakit_Admin1" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Dokter_Agama" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Pasien_Agama" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_Dokter_Spesialis" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_Dokter" ManuallyRouted="false" />
-        <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Dokter" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_JadwalLayanan_LayananRS" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_LayananRS_JenisLayanan" ManuallyRouted="false" />
         <AssociationConnector Association="BogorHealthModel.FK_LayananRS_RumahSakit" ManuallyRouted="false" />
-        <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Pasien" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BogorHealthModel.Antrian" Width="1.5" PointX="10.5" PointY="5.5" />
         <AssociationConnector Association="BogorHealthModel.FK_Antrian_LayananRS" />
         <AssociationConnector Association="BogorHealthModel.FK_Antrian_Pasien" />
+        <EntityTypeShape EntityType="BogorHealthModel.Konsultasi" Width="1.5" PointX="10.5" PointY="9.75" />
+        <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Dokter" />
+        <AssociationConnector Association="BogorHealthModel.FK_Konsultasi_Pasien" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

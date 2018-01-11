@@ -17,8 +17,8 @@ namespace BogorSehat.Models.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pasien()
         {
-            this.Konsultasis = new HashSet<Konsultasi>();
             this.Antrians = new HashSet<Antrian>();
+            this.Konsultasis = new HashSet<Konsultasi>();
         }
     
         public string NIK { get; set; }
@@ -36,8 +36,8 @@ namespace BogorSehat.Models.Entities
     
         public virtual Agama Agama1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Konsultasi> Konsultasis { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Antrian> Antrians { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Konsultasi> Konsultasis { get; set; }
     }
 }

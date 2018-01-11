@@ -11,5 +11,7 @@ namespace BogorSehat.Models
         public string IdRS { get; set; }
         public string IdLayananRS { get; set; }
         public virtual Object Layanan { get; set; }
+
+        public virtual Object RumahSakit { get; set; }
     }
 }

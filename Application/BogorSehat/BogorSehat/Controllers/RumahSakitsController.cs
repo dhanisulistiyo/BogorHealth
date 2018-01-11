@@ -16,14 +16,19 @@ namespace BogorSehat.Controllers
     public class RumahSakitsController : ApiController
     {
         private BogorHealthEntities db = new BogorHealthEntities();
+       
 
         // GET: api/RumahSakits
-        public IQueryable<RumahSakits> GetRumahSakits()
+        public IHttpActionResult GetRumahSakits()
         {
+            string url = Url.Request.RequestUri.GetComponents(UriComponents.SchemeAndServer, UriFormat.Unescaped);
+            string baseUrl = url + "/Content/img/";
+
             //return db.RumahSakits;
             List<RumahSakits> rs = null;
             rs = db.RumahSakits.Select(b => new RumahSakits
             {
+               
                 IdRS = b.IdRS,
                 Deskripsi = b.Deskripsi,
                 Direktur = b.Direktur,
@@ -42,7 +47,7 @@ namespace BogorSehat.Controllers
                 Website = b.Website
             }).ToList();
 
-            return rs.AsQueryable();
+            return Ok(rs);
         }
 
         // GET: api/RumahSakits/5
@@ -151,6 +156,23 @@ namespace BogorSehat.Controllers
         private bool RumahSakitExists(string id)
         {
             return db.RumahSakits.Count(e => e.IdRS == id) > 0;
+        }
+
+        private string imgUrl(string img)
+        {
+            string url = Url.Request.RequestUri.GetComponents(UriComponents.SchemeAndServer, UriFormat.Unescaped);
+            string baseUrl = url + "/Content/img/";
+
+            if (img == null)
+            {
+                return null;
+            }else
+            {
+                return baseUrl+img;
+
+            }
+
+           
         }
     }
 }
