@@ -1,0 +1,42 @@
+<ion-header no-border [class.opaque]="!showToolbar">
+    <ion-navbar color="primary">
+      <ion-title [hidden]="!showToolbar">
+       Detail Antrian
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <div class="scroll-content" style="padding-top:0px">
+    <ion-content fullscreen="true" style="padding-top: 0px;" (ionScroll)="onScroll($event)">
+      <div class="slide-pager" style="margin-left: -18px; width:110%; overflow: visible; margin-top: -10px;">
+        <ion-slides pager="false" loop="true" speed="2000">
+          <ion-slide>
+            <ion-card>
+              <img src="{{baseUrl+Antrian?.Layanan.RumahSakit.ImageUrl}}" style="height:250px; width:100%;" />
+              <ion-card-content>
+                <h2>{{Antrian?.Layanan.RumahSakit.NamaRS}}</h2>
+                <h2>{{Antrian?.Layanan.Layanan.JenisLayanan}}</h2>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <div class="honeymoon">
+        <h1 style="text-align: center;">Detail Antrian</h1>
+        <h3> <ion-icon ios="ios-person" md="md-person" class="custom-pin-nama"></ion-icon> {{Antrian?.Pasien.Nama}}</h3>
+        <p class="p-custom">
+            <ion-icon ios="ios-pin" md="ios-pin-outline" class="custom-pin"></ion-icon>
+            Alamat : {{Antrian?.Pasien.Alamat}}
+        </p>
+  
+        <p class="p-custom">
+          <ion-icon ios="ios-calendar" md="md-calendar" class="custom-pin"></ion-icon>
+            Tanggal Daftar Antrian : {{Antrian?.TanggalDaftar | date}}
+        </p>
+
+        <h3 style="text-align: center;">No. Urut</h3>
+        <div class="no-urut">{{Antrian?.NoAntrian}}</div>
+      </div>
+    </ion-content>
+  </div>
