@@ -1,5 +1,10 @@
 page-home {
 
+    img {
+        max-width: 100%;
+        max-height: 50vw;
+        border: 0;
+    }
     .opaque {
         -webkit-backdrop-filter: saturate(180%) blur(20px);
         backdrop-filter: saturate(180%) blur(20px);

@@ -1,3 +1,4 @@
+import { DetailAntrianPage } from './../pages/detail-antrian/detail-antrian';
 import { RegisterPage } from './../pages/register/register';
 import { AntrianPage } from './../pages/antrian/antrian';
 import { JadwalLayananPage } from './../pages/jadwal-layanan/jadwal-layanan';
@@ -26,6 +27,8 @@ import { HospitalServiceProvider } from '../providers/hospital-service';
 import { LayananServiceProvider } from '../providers/layanan-service';
 import { DokterServiceProvider } from '../providers/dokter-service';
 import { HistoryAntrianPage } from '../pages/history-antrian/history-antrian';
+import { ChatServiceProvider } from '../providers/chat-service';
+
 
 
 @NgModule({
@@ -45,7 +48,8 @@ import { HistoryAntrianPage } from '../pages/history-antrian/history-antrian';
     JadwalLayananPage,
     AntrianPage,
     RegisterPage,
-    HistoryAntrianPage
+    HistoryAntrianPage,
+    DetailAntrianPage
   ],
   imports: [
     BrowserModule,
@@ -85,7 +89,8 @@ import { HistoryAntrianPage } from '../pages/history-antrian/history-antrian';
     JadwalLayananPage,
     AntrianPage,
     RegisterPage,
-    HistoryAntrianPage
+    HistoryAntrianPage, 
+    DetailAntrianPage
   ],
   providers: [
     StatusBar,
@@ -95,7 +100,8 @@ import { HistoryAntrianPage } from '../pages/history-antrian/history-antrian';
     ConfigProvider,
     HospitalServiceProvider,
     LayananServiceProvider,
-    DokterServiceProvider
+    DokterServiceProvider,
+    ChatServiceProvider
   ]
 })
 export class AppModule {}
