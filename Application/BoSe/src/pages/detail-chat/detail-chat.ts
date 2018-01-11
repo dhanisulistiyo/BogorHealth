@@ -1,5 +1,7 @@
+import { ChatServiceProvider } from './../../providers/chat-service';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,  Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, LoadingController } from 'ionic-angular';
+import { AuthServiceProvider } from '../../providers/auth-service';
 
 /**
  * Generated class for the DetailChatPage page.
@@ -14,11 +16,33 @@ import { IonicPage, NavController, NavParams,  Content } from 'ionic-angular';
 })
 export class DetailChatPage {
   @ViewChild(Content) content: Content;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  nik;
+  npa;
+  msgList
+  user
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cs:ChatServiceProvider, public load: LoadingController, public auth: AuthServiceProvider) {
+    this.nik= this.navParams.data['nik']
+    this.npa= this.navParams.data['npa']
+    this.user=this.auth.Authenthication.UserName
+    this.msgList = []
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad DetailChatPage');
+    let loader = this.load.create({
+      content: 'Please wait...'
+    });
+    loader.present();
+
+    this.cs.getDetailsChat(this.nik, this.npa).subscribe(data=>{
+      this.msgList = data.json();
+      console.log(data.json())
+      loader.dismiss();
+    }, err=>{
+      console.log(err);
+      console.log(err.json());
+      loader.dismiss();
+    })
   }
 
   onFocus() {

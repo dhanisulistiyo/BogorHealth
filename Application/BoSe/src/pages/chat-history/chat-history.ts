@@ -1,7 +1,9 @@
+import { ChatServiceProvider } from './../../providers/chat-service';
 import { ListDokterPage } from './../list-dokter/list-dokter';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DetailChatPage } from '../detail-chat/detail-chat';
+import { AuthServiceProvider } from '../../providers/auth-service';
 
 /**
  * Generated class for the ChatHistoryPage page.
@@ -15,20 +17,38 @@ import { DetailChatPage } from '../detail-chat/detail-chat';
   templateUrl: 'chat-history.html',
 })
 export class ChatHistoryPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+Nik
+ListChat
+  constructor(public navCtrl: NavController, public navParams: NavParams, public load: LoadingController, 
+    public cs : ChatServiceProvider, public auth: AuthServiceProvider) {
+    this.Nik= this.auth.Authenthication.UserName;
+    this.ListChat = []
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ChatHistoryPage');
+  ionViewWillEnter(){
+      console.log('ionViewDidLoad ChatHistoryPage');
+      let loader = this.load.create({
+        content: 'Please wait...'
+      });
+      loader.present();
+  
+      this.cs.getHistoryChat(this.Nik).subscribe(data=>{
+        this.ListChat = data.json();
+        console.log(data.json())
+        loader.dismiss();
+      }, err=>{
+        console.log(err);
+        console.log(err.json());
+        loader.dismiss();
+      })
   }
 
   gotoListDokter(){
     this.navCtrl.push(ListDokterPage);
   }
 
-  gotoDetailChat(){
-    this.navCtrl.push(DetailChatPage)
+  gotoDetailChat(nik,npa){
+    this.navCtrl.push(DetailChatPage, {nik,npa})
   }
 
 }

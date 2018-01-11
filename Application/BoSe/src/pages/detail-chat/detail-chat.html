@@ -7,29 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>detail-chat</ion-title>
+    <ion-title>Detail Chat</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <!-- <div class="message-wrap">
-    <div *ngFor="let msg of msgList" class="message" [class.left]=" msg.userId === toUser.id " [class.right]=" msg.userId === user.id ">
-      <img class="user-img" [src]="msg.userAvatar" alt="" src="">
-      <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner>
+  <div class="message-wrap">
+    <div *ngFor="let msg of msgList" class="message" [class.left]=" msg.NPA === user " [class.right]=" msg.NIK ===user">
+      <img class="user-img" src="https://cdn1-a.production.images.static6.com/K99j6fC0xy70Pb7jIa5T4NTxnmw=/177x160:1546x1984/600x800/filters:quality(75):strip_icc():format(jpeg):watermark(liputan6-media-production/assets/images/watermarks/liputan6/watermark-gray-big-portrait.png,0,-0,0)/liputan6-media-production/medias/1013859/original/ce3f079abc5f884384be27073a7f3beal_1.jpg" >
+    
       <div class="msg-detail">
         <div class="msg-info">
-          <p>
-            Dhani&nbsp;&nbsp;&nbsp; 5:30</p>
+          <p *ngIf=" msg.NIK === user ">
+            {{msg.Pasien.Nama}}&nbsp;&nbsp;&nbsp; {{msg.DateTime | date:'HH:mm'}}</p>
+            <p *ngIf=" msg.NPA === user ">
+                {{msg.Pasien.Nama}}&nbsp;&nbsp;&nbsp; {{msg.DateTime | date:'HH:mm'}}</p>
         </div>
         <div class="msg-content">
           <span class="triangle"></span>
-          <p class="line-breaker ">{{msg.message}}</p>
+          <p class="line-breaker ">{{msg.Chat}}</p>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 </ion-content>
 
