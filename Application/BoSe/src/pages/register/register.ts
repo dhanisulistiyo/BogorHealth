@@ -31,7 +31,7 @@ export class RegisterPage {
     console.log(this.Pasien)
     this.auth.register(this.Pasien).subscribe(data=>{
       console.log(data)
-      this.showPopup("Success", "Your new account is currently under reviewed. We will send you an email confirmation once your account is approved.");
+      this.showPopup("Success", "Your new account is created.");
     }, err=>{
       console.log(err)
       this.showPopup("Error", "Failed to create account. Please try again latter ...");
