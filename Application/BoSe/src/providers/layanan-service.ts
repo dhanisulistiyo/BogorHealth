@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LayananServiceProvider {
 
-  constructor(public http: Http, public conf: ConfigProvider) {
+  constructor(public http: Http, public conf:ConfigProvider) {
     console.log('Hello LayananServiceProvider Provider');
   }
 
@@ -30,6 +30,12 @@ export class LayananServiceProvider {
 
   getAntrian(nik, id){
     let url = this.conf.baseUrl+'api/Antrians?nik='+nik+'&idlayanan='+id;
+    let res = this.http.get(url).map(res=>res).map(res=>res);
+    return res;
+  }
+
+  getListAntrian(nik){
+    let url = this.conf.baseUrl+'api/ListAntrian?nik='+nik;
     let res = this.http.get(url).map(res=>res).map(res=>res);
     return res;
   }
